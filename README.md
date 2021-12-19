@@ -44,7 +44,7 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 
 ## Getting Started
 ### Installation Packages
-#### To Use React Redux With Your React App, Install It As A Dependency:
+#### 1-To Use React Redux With Your React App, Install It As A Dependency:
 - npx create-react-app my-app
 >>>
 - npm install redux
@@ -54,17 +54,17 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 -  npm install redux
 >>>  
 - npm i redux-devtools-extension
-#### React-Dom > This Package Serves As The Entry Point To The Dom And Server Renderers For React. It Is Intended To Be Paired With The Generic React Package, Which Is Shipped As React To Npm.
+#### 2-React-Dom > This Package Serves As The Entry Point To The Dom And Server Renderers For React. It Is Intended To Be Paired With The Generic React Package, Which Is Shipped As React To Npm.
 - npm install react-router-dom
-#### React-Dotenv > Load Environment Variables Dynamically For Your React Applications Created With Cra (Create-React-App).
+#### 3-React-Dotenv > Load Environment Variables Dynamically For Your React Applications Created With Cra (Create-React-App).
 - npm install react-dotenv
 >>> 
 - npm install dotenv
-#### Request And Response Of Back-End
+#### 4-Request And Response Of Back-End
 - npm install axios
-#### React Icons > Include popular icons in your React projects easily with react-icons
+#### 5-React Icons > Include popular icons in your React projects easily with react-icons
 - npm install react-icons --save
-#### sweetalert2 A Beautiful, Responsive, Customizable, Accessible (Wai-aria) Replacement For Javascript's Popup Boxes.
+#### 6-sweetalert2 > A Beautiful, Responsive, Customizable, Accessible (Wai-aria) Replacement For Javascript's Popup Boxes.
 - npm install sweetalert2
-#### Firebase > provides the tools and infrastructure you need to develop, grow, and earn money from your app. 
+#### 7-Firebase > provides the tools and infrastructure you need to develop, grow, and earn money from your app. 
 - npm install --save firebase

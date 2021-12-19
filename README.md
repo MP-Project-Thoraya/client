@@ -26,7 +26,7 @@ POST         | public     |`/user/create`                         |{email, passw
 POST         | public    |`/user/log`                            |{email, password}
 GET          | admin only   |`/user/`                               |
 DELETE       | admin only   |`/user/`                               |
-GET          | public   |`/user/confirmation/:email/:token`     |
+GET          | public   |`/user/verifyemail/:email/:token`     |
 PUT          | public     |`/user/forgetPassword`                 |{email}
 PUT          | public    |`/user/resetPassword`                  |{resetLink, newPassword}
 GET          | user+admin   |`/user/:_id”`                          |
@@ -68,3 +68,13 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 - npm install sweetalert2
 #### 7-Firebase > provides the tools and infrastructure you need to develop, grow, and earn money from your app. 
 - npm install --save firebase
+## Components
+- Login
+- Signup
+- Navbar
+- Business 
+- Services
+- Verifyemail
+- Password
+- Userfile
+- Firebase

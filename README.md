@@ -18,3 +18,26 @@
 - As An Admin, I Can See All Users Profile And All Content Of The Website What The User Published.
 - As An Admin,  I Can Delete Users And What Is Added By The User On The Website.
 - As An Admin, I Can Update The Contents Of The Website.
+
+## Router Routes
+HTTP Method  | authorize    |   Path                               | Request Body
+------------- | -----------  | ---------------------------           |----------------------
+POST         | public     |`/user/create`                         |{email, password, role}
+POST         | public    |`/user/log`                            |{email, password}
+GET          | admin only   |`/user/`                               |
+DELETE       | admin only   |`/user/`                               |
+GET          | public   |`/user/confirmation/:email/:token`     |
+PUT          | public     |`/user/forgetPassword`                 |{email}
+PUT          | public    |`/user/resetPassword`                  |{resetLink, newPassword}
+GET          | user+admin   |`/user/:_id”`                          |
+POST         | public    |`/user/googlelogin`                    |{idToken}
+POST         | admin + user |`/comment/create`                      |{text,user,Post}
+PUT          | admin + user |`/comment/update`                      |{id, text}
+DELETE       | admin + user |`/comment/delete/:_id`                 |
+GET          | admin + user |`/posts/`                              |
+GET          | admin + user |`/posts/userPost/:postedBy`            |
+GET          | admin + user |`/posts/onePost/:_id`                  |
+POST         | admin + user |`/posts/create`                        |{image, description, post}
+PUT          | admin + user |`/posts/archivePost/:_id`              |{id}
+DELETE       | admin + user |`/posts/delete/:_id`                   |
+PUT          | admin + user |`/posts/update`                        |{id, newdescribe}

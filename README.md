@@ -77,4 +77,5 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 - Verifyemail
 - Password
 - Userfile
+- Footer
 - Firebase

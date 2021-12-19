@@ -41,3 +41,30 @@ POST         | admin + user |`/posts/create`                        |{image, des
 PUT          | admin + user |`/posts/archivePost/:_id`              |{id}
 DELETE       | admin + user |`/posts/delete/:_id`                   |
 PUT          | admin + user |`/posts/update`                        |{id, newdescribe}
+
+## Getting Started
+### Installation Packages
+#### To Use React Redux With Your React App, Install It As A Dependency:
+- npx create-react-app my-app
+>>>
+- npm install redux
+>>>
+- npm install react-redux
+>>> 
+-  npm install redux
+>>>  
+- npm i redux-devtools-extension
+#### React-Dom > This Package Serves As The Entry Point To The Dom And Server Renderers For React. It Is Intended To Be Paired With The Generic React Package, Which Is Shipped As React To Npm.
+- npm install react-router-dom
+#### React-Dotenv > Load Environment Variables Dynamically For Your React Applications Created With Cra (Create-React-App).
+- npm install react-dotenv
+>>> 
+- npm install dotenv
+#### Request And Response Of Back-End
+- npm install axios
+#### React Icons > Include popular icons in your React projects easily with react-icons
+- npm install react-icons --save
+#### sweetalert2 A Beautiful, Responsive, Customizable, Accessible (Wai-aria) Replacement For Javascript's Popup Boxes.
+- npm install sweetalert2
+#### Firebase > provides the tools and infrastructure you need to develop, grow, and earn money from your app. 
+- npm install --save firebase

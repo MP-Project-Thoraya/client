@@ -18,6 +18,11 @@
 - As An Admin, I Can See All Users Profile And All Content Of The Website What The User Published.
 - As An Admin,  I Can Delete Users And What Is Added By The User On The Website.
 - As An Admin, I Can Update The Contents Of The Website.
+## Links
+[Deployment:] (https://Deployment.com ) .
+[Local:] ( http://localhost:3000 ).
+[Slides: ] (https://Slides ) .
+
 
 ## Router Routes
 HTTP Method  | authorize    |   Path                               | Request Body

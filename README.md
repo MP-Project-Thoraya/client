@@ -82,3 +82,16 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 
 ## UML Diagram
 ![ ](https://github.com/MP-Project-Thoraya/client/blob/main/uml-front.png)
+
+## Wirefrime
+### Main Page
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/homepage.png)
+### Gatogories Page for Business-services Pages
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/servicespage.png)
+### Posts Page
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/post%20page.png)
+### Sign Up 
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/signup.png)
+### Login 
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/login.png)
+

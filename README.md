@@ -79,3 +79,6 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 - Userfile
 - Footer
 - Firebase
+
+## UML Diagram
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/uml-front.png)

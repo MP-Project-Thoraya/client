@@ -1,11 +1,9 @@
 # client
 
-
 ## Business services website
 #### Business and services website that supports a business but does not produce a tangible good.
 #### This website service aligns IT assets with the people who represent the business goals, thus supporting researchers and meeting people's needs with less time and faster services.
-### This is a backend for a Business services website
-### The website that supports a business but does not produce a tangible good.
+
 
 ## User Stories
 - Registration: As An Anonymous User, I Can Register On The Website So That I Can Use Features On The Website.
@@ -73,14 +71,10 @@ PUT          | admin + user |`/posts/update`                        |{id, newdes
 - Userfile
 - Footer
 - Firebase
-## Models
+
 
 ## UML Diagram
 ![ ](https://github.com/MP-Project-Thoraya/client/blob/main/uml-front.png)
-Key |type   |   options                              | default value
-------------- | -----------  | ---------------------------           |----------------------
-email         | String   |required, unique                      |N/A
-username        |  String    |required                         |N/A
 
 ## Wirefrime
 ### Main Page

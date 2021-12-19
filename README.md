@@ -22,7 +22,7 @@
 - Deployment: https://Deployment.com .
 - Local:  http://localhost:3000 .
 - Slides: https://Slides  .
-=Trello: https://trello.com/thorayaalrashidi/boards
+- Trello: https://trello.com/thorayaalrashidi/boards
 
 ## Router Routes
 HTTP Method  | authorize    |   Path                               | Request Body

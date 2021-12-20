@@ -22,6 +22,7 @@
 - Deployment: https://Deployment.com .
 - Local:  http://localhost:3000 .
 - Slides: https://Slides  .
+- Server side: https://github.com/MP-Project-Thoraya/server
 - Trello: https://trello.com/thorayaalrashidi/boards
 
 ## Router Routes

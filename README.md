@@ -25,27 +25,17 @@
 - Trello: https://trello.com/thorayaalrashidi/boards
 
 ## Router Routes
-HTTP Method  | authorize    |   Path                               | Request Body
+Path  | Component    | Permissions                             | Behavior
 ------------- | -----------  | ---------------------------           |----------------------
-POST         | public     |`/user/create`                         |{email, password, role}
-POST         | public    |`/user/log`                            |{email, password}
-GET          | admin only   |`/user/`                               |
-DELETE       | admin only   |`/user/`                               |
-GET          | public   |`/user/verifyemail/:email/:token`     |
-PUT          | public     |`/user/forgetPassword`                 |{email}
-PUT          | public    |`/user/resetPassword`                  |{resetLink, newPassword}
-GET          | user+admin   |`/user/:_id”`                          |
-POST         | public    |`/user/googlelogin`                    |{idToken}
-POST         | admin + user |`/comment/create`                      |{text,user,Post}
-PUT          | admin + user |`/comment/update`                      |{id, text}
-DELETE       | admin + user |`/comment/delete/:_id`                 |
-GET          | admin + user |`/posts/`                              |
-GET          | admin + user |`/posts/userPost/:postedBy`            |
-GET          | admin + user |`/posts/onePost/:_id`                  |
-POST         | admin + user |`/posts/create`                        |{image, description, post}
-PUT          | admin + user |`/posts/archivePost/:_id`              |{id}
-DELETE       | admin + user |`/posts/delete/:_id`                   |
-PUT          | admin + user |`/posts/update`                        |{id, newdescribe}
+/        |SplashPage    |public <Route>                         |Home page
+/signup         | SignupPage   |`/user/log`                            |Signup form, link to login, navigate to homepage after signup
+/login        |LoginPage   |`/user/`                               |Login form, navigate to todos after login
+/verifyemail      | verifyemail   |user`     |A page enables the user to activate their accoun
+/resetPassword          |password   |user                |A page to let a user change his password
+  /posts/:id      | Post  |user only                            |Shows a post
+/posts/:id      | Post  |user only                            |Edits a post 
+ /posts/:id      | Post  |user only                            |Delete a post 
+
 
 ## Getting Started
 ### Installation Packages

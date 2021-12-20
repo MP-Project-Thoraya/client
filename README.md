@@ -36,7 +36,8 @@ Path  | Component    | Permissions                             | Behavior
 /posts/:id      | Post  |user                         |Edits a post 
  /posts/:id      | Post  |user                         |Delete a post 
 
-
+## UML Diagram
+![ ](https://github.com/MP-Project-Thoraya/client/blob/main/uml-front.png)
 ## Getting Started
 ### Installation Packages
 #### 1-To Use React Redux With Your React App, Install It As A Dependency:
@@ -75,9 +76,6 @@ Path  | Component    | Permissions                             | Behavior
 - Footer
 - Firebase
 
-
-## UML Diagram
-![ ](https://github.com/MP-Project-Thoraya/client/blob/main/uml-front.png)
 
 ## Wirefrime
 ### Main Page

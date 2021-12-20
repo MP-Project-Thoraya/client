@@ -23,7 +23,7 @@
 - Local:  http://localhost:3000 .
 - Slides: https://Slides  .
 - Server side: https://github.com/MP-Project-Thoraya/server
-- Trello: https://trello.com/thorayaalrashidi/boards
+- Trello: https://trello.com/b/xpazzNEZ/mp-porject-thoraya
 
 ## Router Routes
 Path  | Component    | Permissions                             | Behavior

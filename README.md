@@ -28,13 +28,13 @@
 Path  | Component    | Permissions                             | Behavior
 ------------- | -----------  | ---------------------------           |----------------------
 /        |SplashPage    |public <Route>                         |Home page
-/signup         | SignupPage   |`/user/log`                            |Signup form, link to login, navigate to homepage after signup
-/login        |LoginPage   |`/user/`                               |Login form, navigate to todos after login
-/verifyemail      | verifyemail   |user`     |A page enables the user to activate their accoun
+/signup         | SignupPage   |user                           |Signup form, link to login, navigate to homepage after signup
+/login        |LoginPage   |user                               |Login form, navigate to todos after login
+/verifyemail      | verifyemail   |user    |A page enables the user to activate their accoun
 /resetPassword          |password   |user                |A page to let a user change his password
-  /posts/:id      | Post  |user only                            |Shows a post
-/posts/:id      | Post  |user only                            |Edits a post 
- /posts/:id      | Post  |user only                            |Delete a post 
+  /posts/:id      | Post  |user                           |Shows a post
+/posts/:id      | Post  |user                         |Edits a post 
+ /posts/:id      | Post  |user                         |Delete a post 
 
 
 ## Getting Started

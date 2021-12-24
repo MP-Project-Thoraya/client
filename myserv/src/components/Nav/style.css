@@ -1,0 +1,52 @@
+.topright{
+
+flex:3;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+}
+
+.topcenter
+{
+
+flex:6;
+
+}
+
+
+.toplist{
+
+display: flex;
+justify-content: center;
+margin: 0;
+
+padding: 0;
+list-style: none;
+
+
+
+
+}
+
+
+
+.toplistitem
+{
+    padding-left: 70px;
+margin-right:10px ;
+font-size: 18px;
+font-weight: 300;
+cursor: pointer;
+
+}
+
+.topimg {
+
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}

@@ -5,6 +5,11 @@ import './style.css'
 
 const NavBar = () => {
   return (
+    <div className="top">
+    <div className="topleft">
+        <i className="logo">my service-Busines</i>
+  
+   
     <div className="topcenter">
     <ul className="toplist">
     <Link to="">
@@ -22,12 +27,6 @@ const NavBar = () => {
       </Link>
 
 
-
-      <Link to="/aboutus">
-
-        <li  className="toplistitem" >About Us</li>
-
-      </Link>
       <Link to="/logout">
         <li  className="toplistitem" >Log Out</li>
       </Link>
@@ -40,6 +39,9 @@ const NavBar = () => {
 
     </ul>
     </div>
+    </div>
+    </div>
+    
   );
 };
 

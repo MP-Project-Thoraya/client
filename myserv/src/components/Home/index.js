@@ -1,15 +1,20 @@
-import React from "react";
 
+import './style.css'
+import Header from "./../Header"
+import Content from "../Contenthome";
+import Sidebar from "../Sidebar";
 
 const Home =()=> {
   return (
-    <div className="home">
+    <>
 
-<h1>home</h1>
+<Header />
+    <div className="home"> 
+    <Content/>
+     <Sidebar/>
 
-
-
-    </div>
+    </div> 
+    </>
   );
   
 }

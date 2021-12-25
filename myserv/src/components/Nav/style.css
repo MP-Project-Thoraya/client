@@ -1,4 +1,11 @@
-.topright{
+.top{
+background-color: rgb(124, 148, 148);
+
+}
+
+
+
+.topright,.topleft{
 
 flex:3;
 display: flex;
@@ -14,33 +21,63 @@ justify-content: center;
 flex:6;
 
 }
+.logo{
+font-size: 26px;
+margin-left: 10px;
+color: rgb(53, 59, 55);
 
+}
 
 .toplist{
 
 display: flex;
 justify-content: center;
-margin: 0;
-
+margin-bottom: 10px;
 padding: 0;
 list-style: none;
 
-
-
-
 }
 
+.toplist {
+    overflow: hidden;
+    background-color: rgb(124, 148, 148);
+    display: flex;
+    justify-content: space-around;
+    display: block;
+    list-style: none;
+   height: 70px;
+  }
+  .toplist ul li {
 
+    display: inline-block;
+  }
+  
+  .toplist a {
+    color: rgb(61, 65, 63);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+    font-size: 25px;
+  }
+  
+  .toplist a:hover {
+   
+    color: rgb(34, 49, 40);
+  }
 
 .toplistitem
 {
-    padding-left: 70px;
-margin-right:10px ;
+    padding-left: 50px;
+
+margin-top: 15px;
 font-size: 18px;
 font-weight: 300;
 cursor: pointer;
 
+
 }
+
 
 .topimg {
 

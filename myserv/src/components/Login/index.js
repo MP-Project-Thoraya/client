@@ -2,6 +2,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import './style.css'
 
 
 const Login = () => {
@@ -21,7 +22,7 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         if(response.data){
-          navigate("/posts");
+          navigate("/");
         
 
         }
@@ -34,9 +35,10 @@ const Login = () => {
 
   const reg = () => {
 
-    navigate("/signup");
+    navigate("/Registration");
   };
   return (
+    <div className="loginmain">
     <div className="loginform">
       <Container>
         <h1 className="p-3 mb-2 bg-gradient-light text-dark">Login</h1>
@@ -86,6 +88,7 @@ const Login = () => {
           </Form.Group>
         </form>
       </Container>
+    </div>
     </div>
   );
 };

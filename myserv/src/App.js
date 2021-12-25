@@ -8,6 +8,8 @@ import Userprofile from "./components/Userprofile";
 import "./App.css";
 import { Routes, Route } from "react-router";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
+
 
 const App = () => {
 
@@ -15,6 +17,7 @@ const App = () => {
     <>
       <div className="mainpage">
         <Nav />
+    
         <Routes>
           <Route exact path="/" element={<Home />} />
           {/* <Route exact path="/myservice" element={ <Login />,<Services/>  }/> */}
@@ -30,7 +33,9 @@ const App = () => {
             }}
           />
         </Routes>
+        
       </div>
+      <Footer/>
     </>
   );
 };

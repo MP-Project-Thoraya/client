@@ -1,0 +1,34 @@
+.footer {
+    margin-top: 30px;
+    background-color:  rgb(124, 148, 148);
+    font-family:  'Lobster', cursive;
+    font-size: large;
+    text-align: center;
+  }
+  
+  .footer .part {
+    width: 100%;
+    padding: 0.5rem;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+  
+  .footer .part a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: 0.8s;
+  }
+  
+  .footer .part a:hover {
+    color: var(--light-purple1);
+  }
+  
+  .footer .part .footeritem {
+    font-size: 200%;
+    margin: 0 1rem;
+  }
+  
+    .footer .part .footeritem {
+      margin: 0 1rem;
+    }
+  

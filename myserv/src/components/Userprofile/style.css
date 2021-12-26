@@ -1,0 +1,107 @@
+.userprofile
+{
+display: flex;
+width: 40%;
+
+}
+.userprofilewa
+{
+flex: 9;
+padding: 20px;
+
+
+
+}
+
+.userprofiletitle 
+{
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+}
+
+
+.userprofileupdate {
+
+font-size: 26px;
+margin-bottom: 25px;
+color: rgb(44, 71, 71);
+
+}
+
+
+.userprofiledelete 
+{
+    font-size: 17px;
+    margin-bottom: 25px;
+    color: rgb(175, 37, 37);
+cursor: pointer;
+
+
+}
+
+.settingsform{
+display: flex;
+flex-direction: column;
+
+}
+
+
+.settingspp {
+display: flex;
+align-items: center;
+margin: 5px 0;
+}
+
+
+.imgpr {
+width: 100px;
+height: 100px;
+object-fit: cover;
+
+}
+
+
+.settingPPIcon {
+
+width: 30px;
+height: 25px;
+border-radius: 0%;
+background-color: rgb(158, 98, 103);
+color: rgb(252, 247, 247);
+display: flex;
+align-items: center;
+margin-left: 10px;
+cursor: pointer;
+
+
+}
+
+.settingsform >label{
+font-size: 20px;
+margin-top: 20px;
+
+
+}
+.settingsform >input {
+color: darkgrey;
+margin: 10px 0;
+height: 30px;
+border: none;
+border-bottom: 1px solid darkgrey;
+}
+.userprofilesubmit{
+width: 120px;
+align-self: center;
+border: none;
+border-radius: 10px;
+color: white;
+background-color: rgb(62, 85, 83);
+padding: 10px;
+margin-top: 20px;
+cursor: pointer;
+
+}

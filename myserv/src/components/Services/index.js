@@ -1,5 +1,6 @@
 import React from "react";
-import './style.css';
+import Onepageservice from "./../OnePageService";
+import './style.css'
 
 const Services = ()=> {
   return (
@@ -8,7 +9,7 @@ const Services = ()=> {
 
 <h1>all the service here</h1>
 
-
+< Onepageservice/>
 
 
     </div>

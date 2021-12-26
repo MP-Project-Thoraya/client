@@ -1,5 +1,5 @@
 import React from "react";
-//import Services from "./Components/Services"
+import Services from "./components/Services"
 //import Onepageservice from "./components/OnePageService";
 import Nav from "./components/Nav"
 import Registration from "./components/Registration";
@@ -23,7 +23,7 @@ const App = () => {
           {/* <Route exact path="/myservice" element={ <Login />,<Services/>  }/> */}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Registration" element={<Registration />} />
-
+          <Route exact path="/myservice" element={<Services  />} />
           <Route exact path="/userprofile" element={<Userprofile />} />
 
           <Route

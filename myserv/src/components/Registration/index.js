@@ -1,4 +1,4 @@
-
+import './style.css'
 import { Form, Button, Container } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -33,6 +33,8 @@ const Registration = () => {
     navigate("/login");
   };
   return (
+
+    <div className="signupmain">
     <div className="signup">
     <Container>
       <h1 className="">Sign Up</h1>
@@ -100,6 +102,7 @@ const Registration = () => {
         </Button>
       </form>
     </Container>
+    </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ const instialState = {
     userId:"",
     userName:"",
     avatar:"",
+    role:""
 
   };
 
@@ -18,25 +19,27 @@ const instialState = {
     switch (type) {
         //this type will send payload contian token
       case "LOGIN":
-        const { token,userId,userName,avatar } = payload;
+        const { token,userId,userName,avatar,role } = payload;
         localStorage.setItem("token", token);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
         localStorage.setItem("avatar", avatar);
-        return { token,userId,userName,avatar }; // << here return token after the value change contain token for user
+        localStorage.setItem("Role", role);
+        return { token,userId,userName,avatar,role }; // << here return token after the value change contain token for user
   
 
 case "LOGOUT"://<< this type clear token and localstorage 
         localStorage.clear();
-        return { token:"",userId:"",userName:"",avatar:"" };
+        return { token:"",userId:"",userName:"",avatar:"",role:"" };
   
       default: //<<this default return state if there no any change will back for me initial value for state 
         const tokenStorage = localStorage.getItem("token");
         const userIdStorage = localStorage.getItem("userId");
         const userNameStorage = localStorage.getItem("userName");
         const avatarStorage = localStorage.getItem("avatar");
+        const roleStorage = localStorage.getItem("role");
         if (tokenStorage) return { token: tokenStorage };
-        else return { token:tokenStorage,userId:userIdStorage,userName:userNameStorage,avatar:avatarStorage};
+        else return { token:tokenStorage,userId:userIdStorage,userName:userNameStorage,avatar:avatarStorage,role:roleStorage};
     }
   };
   

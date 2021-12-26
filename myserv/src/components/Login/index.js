@@ -3,33 +3,44 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './style.css'
+import { useDispatch } from "react-redux";
+import {login} from './../../reducers/login'
 
 
 const Login = () => {
+  const dispatch=useDispatch();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [logResponse, setLogResponse] = useState("");
 
   const navigate = useNavigate();
 
-  const login = async (e) => {
+  const signin = async (e) => {
     e.preventDefault();
+    let role="";
     
-    await axios.post("http://localhost:3000/login", {
+    const user=await axios.post("http://localhost:3000/login", {
         email: email,
         password: password,
       })
-      .then((response) => {
-        console.log(response.data);
-        if(response.data){
-          navigate("/");
-        
-
-        }
-        <Button className="button" onClick={login}>
-        Login
-      </Button>
-      });
+      if(user.data.result.role==="61c824b37826606eacd4bf69")
+      {
+        role="admin";
+      }else{
+        role="user"
+      }
+      console.log("user",user.data);
+      const data={
+        token: user.data.token,
+        userId: user.data.result._id,
+        userName:user.data.result.username,
+        avatar:user.data.result.avatar,
+        role:role
+    
+      }
+      dispatch(login(data));
+      navigate ("/")
+    
   };
 
 
@@ -72,7 +83,7 @@ const Login = () => {
             <Form.Check type="checkbox" label="Remeber me" />
             <p>{logResponse}</p>
 
-            <Button className="button" onClick={login}>
+            <Button className="button" onClick={signin}>
               Login
             </Button>
             <p>Need an Account ?</p>
@@ -84,7 +95,10 @@ const Login = () => {
             >
               Register
             </Button>
-           
+        
+
+            <img className="imggoogle" src="https://th.bing.com/th/id/R.fb13e489b588b98b0d85eb7428a484fe?rik=7sWHBBz%2frsdzkg&pid=ImgRaw&r=0" alt="no img"/>
+
           </Form.Group>
         </form>
       </Container>

@@ -1,9 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './style.css'
-
+import {logout} from "./../../reducers/login"
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = () => {
+
+  const navigate = useNavigate();
+  const state = useSelector((state) => {
+    return state;
+  });
+  console.log(state, "state");
+  const dispatch = useDispatch();
+
+  const signOut = () => {
+    dispatch(logout({ avatar: "", role: "", token: "", userId: "",   userName: ""}));
+    navigate('/Login')
+  };
+
   return (
     <div className="top">
     <div className="topleft">
@@ -26,11 +40,9 @@ const NavBar = () => {
         <li  className="toplistitem" >SignUp</li>
       </Link>
 
-
-      <Link to="/logout">
-        <li  className="toplistitem" >Log Out</li>
-      </Link>
-     
+      <button onClick={signOut}>logOut</button>
+       
+      
       <div className="topright">
       <Link to="/userprofile">
 <img className="topimg" src="https://www.osmpic.com/wp-content/uploads/2019/03/PicsArt_03-21-10.30.59-901x1024.jpg"  alt="no img" />

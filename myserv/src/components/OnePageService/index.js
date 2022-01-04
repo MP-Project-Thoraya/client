@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import './style.css';
-import { storage } from "./../firebase";
-
+import { storage } from "./../firebase"
 
 const Onepageservice= ()=> {
+
+  const [ url, setUrl] = useState("");
+  const [image, setImage] = useState(null);
+  const [post,setPost] = useState(null);
+
+  const handleChange = (e) => {
+    console.log(e);
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+  const handleUpload  = () => {
+    console.log(image);
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+          });
+      }
+    ); 
+
+    }
+//console.log("image:",image)
+
+
   return (
       <div className='post'>
          <img className='postimgage'
@@ -23,7 +57,14 @@ const Onepageservice= ()=> {
     </div>
     </div>
     </form>
-    </div>)
+    <input type="file" onChange={handleChange} />
+    <button onClick={handleUpload}>Upload</button>
+    <br/>
+    <img src={url} />
+    {url}
 
-    }
+    </div> )
+    
+
+        }
 export default Onepageservice;

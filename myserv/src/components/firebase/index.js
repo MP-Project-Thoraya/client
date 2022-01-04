@@ -3,15 +3,14 @@ import "firebase/compat/storage";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBqhAlXz6i6PemH2IXro2sreBrrgL_0vlU",
-    authDomain: "social-media-ba00b.firebaseapp.com",
-    projectId: "social-media-ba00b",
-    storageBucket: "social-media-ba00b.appspot.com",
-    messagingSenderId: "38663510863",
-    appId: "1:38663510863:web:c80b815f07cdab5343833a",
-    measurementId: "G-3YZ2Z48THM"
-  };
-  
+  apiKey: "AIzaSyAJvHPxwbv6t4PlZCsPM8mJl7PyogJMozM",
+  authDomain: "my-services-2524e.firebaseapp.com",
+  projectId: "my-services-2524e",
+  storageBucket: "my-services-2524e.appspot.com",
+  messagingSenderId: "1089453098511",
+  appId: "1:1089453098511:web:2bc38deee470c2fa88c57a",
+  measurementId: "G-4XE4C8HH1P"
+};
 firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();

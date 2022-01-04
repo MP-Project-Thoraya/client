@@ -11,13 +11,17 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 
 
+
 const App = () => {
+
+  
+
 
   return (
     <>
       <div className="mainpage">
         <Nav />
-    
+        
         <Routes>
           <Route exact path="/" element={<Home />} />
           {/* <Route exact path="/myservice" element={ <Login />,<Services/>  }/> */}
@@ -33,7 +37,7 @@ const App = () => {
             }}
           />
         </Routes>
-        
+       
       </div>
       <Footer/>
     </>

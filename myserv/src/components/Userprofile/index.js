@@ -4,18 +4,13 @@ import {BsPersonSquare, BsFillTrashFill} from "react-icons/bs";
 
 import {useSelector} from 'react-redux'
 
-const Userprofile=()=> {
-
-
-
-
-    const state=useSelector((state)=>{
+const Userprofile=()=> {         
+      const state=useSelector((state)=>{
       console.log("state.signIn.userName",state.signIn.userName)
         return state;
     });
 
-  
-    return (
+       return (
       <div className="userprofile">
          <div className="userprofilewa">
          <div className="userprofiletitle">
@@ -51,3 +46,5 @@ const Userprofile=()=> {
   
   export default Userprofile;
   
+
+

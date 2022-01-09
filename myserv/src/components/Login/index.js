@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     let role="";
     
-    const user=await axios.post("http://localhost:3000/login", {
+    const user=await axios.post("http://localhost:5000/login", {
         email: email,
         password: password,
       })
@@ -95,8 +95,7 @@ const Login = () => {
             >
               Register
             </Button>
-        
-
+      
             <img className="imggoogle" src="https://th.bing.com/th/id/R.fb13e489b588b98b0d85eb7428a484fe?rik=7sWHBBz%2frsdzkg&pid=ImgRaw&r=0" alt="no img"/>
 
           </Form.Group>

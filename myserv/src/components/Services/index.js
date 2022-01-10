@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AllServices from "../AllServices";
 import Onepageservice from "../AllServices";
@@ -8,6 +9,7 @@ import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 
 const Services = () => {
+  let navigate = useNavigate();
   const [addService, setaddService] = useState(false);
 
   const [progress, setProgress] = useState(0);
@@ -111,6 +113,21 @@ const Services = () => {
     e.target.comment.value = "";
   };
 
+  ///////////////////////
+
+  const deletePost = async (id) => {
+    await axios.delete(
+      `http://localhost:5000/deleteposts/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${state.signIn.token}`,
+        },
+      }
+    );
+    navigate('/myservice');
+  };
+  ////////////////////////
+
   return (
     <div className="c">
       <h1>Serivces component</h1>
@@ -182,11 +199,21 @@ const Services = () => {
                 <h1>
                   Post {i + 1}: {post?.title}
                 </h1>
+                <button onClick={() => {  deletePost(post._id);
+                  }}
+                  className="deleteBtn"
+                >
+                  Delete post
+                </button>
+
+
+
                 <h4>Author: {post?.createby?.username}</h4>
                 <p>{post?.description}</p>
                 {post?.image?.map((i) => (
                   <img src={i} alt="" width="200px" />
                 ))}
+
 
                 <form
                   className="comments_form"
@@ -214,6 +241,7 @@ const Services = () => {
                       Comments
                     </h3>
                   </div>
+                  {console.log("my comments", commments)}
                   {commments
                     ?.filter((i) => i.onservicepost == post._id)
                     .map((comment, index) => {
@@ -229,6 +257,9 @@ const Services = () => {
                                 {comment.createdAt.slice(11, 16)}
                               </p>
                             </div>
+
+
+
                             {/* {comment.createby._id == state.signIn.userId ? (
                               <p
                                 className="del"

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {BsPersonSquare, BsFillTrashFill} from "react-icons/bs";
 import AllServices from "../AllServices";
 import Onepageservice from "../AllServices";
 import "./style.css";
@@ -136,12 +137,7 @@ const Services = () => {
 
       {addService ? (
         <div className="post">
-          <img
-            className="postimgage"
-            src="https://www.stancoe.org/sites/default/files/styles/banner/public/banners/Administration.jpg?itok=jXKB2uR2"
-            height="170px"
-            alt="no img"
-          />
+     
           <form onSubmit={newPost} className="writepost">
             <div className="postgroup">
               <input
@@ -159,7 +155,7 @@ const Services = () => {
               ></textarea>
 
               <div className="upload">
-                <input
+                <input className="labalimg"
                   type="file"
                   accept=".gif,.jpg,.jpeg,.png"
                   onChange={(e) => {
@@ -168,16 +164,16 @@ const Services = () => {
                   id="img"
                   style={{ display: "none" }}
                 />
-                <label htmlFor="img">تحميل صور</label>
+                <label htmlFor="img" className="labalimg">Upload Images</label>
                 {!(progress == 0) ? (
                   <div className="progress">
-                    <p>يتم الرفع {progress}%</p>
+                    <p>the image will download {progress}%</p>
                   </div>
                 ) : null}
               </div>
               <div className="imagesPost">
                 {images?.map((image) => (
-                  <img src={image} width="80px" height="80px" />
+                  <img src={image} width="400px" height="200px" />
                 ))}
               </div>
 
@@ -202,8 +198,8 @@ const Services = () => {
                 <button onClick={() => {  deletePost(post._id);
                   }}
                   className="deleteBtn"
-                >
-                  Delete post
+                >  <BsFillTrashFill/>
+                 
                 </button>
 
 
@@ -211,7 +207,7 @@ const Services = () => {
                 <h4>Author: {post?.createby?.username}</h4>
                 <p>{post?.description}</p>
                 {post?.image?.map((i) => (
-                  <img src={i} alt="" width="200px" />
+                  <img src={i} alt="" width="400px" />
                 ))}
 
 
@@ -226,10 +222,10 @@ const Services = () => {
                   <div className="commentTail">
                     <textarea
                       name="comment"
-                      placeholder="Your message"
+                      placeholder="wirite here comments"
                       required
-                      cols="55"
-                      rows="8"
+                      cols="50"
+                      rows=""
                     ></textarea>
                   </div>
                   <div className="numComment">
@@ -260,16 +256,6 @@ const Services = () => {
 
 
 
-                            {/* {comment.createby._id == state.signIn.userId ? (
-                              <p
-                                className="del"
-                                // onClick={() => DeleteComment(comment._id)}
-                              >
-                                ❌
-                              </p>
-                            ) : (
-                              <></>
-                            )} */}
                           </div>
                         </div>
                       );

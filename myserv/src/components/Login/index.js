@@ -5,7 +5,7 @@ import axios from "axios";
 import './style.css'
 import { useDispatch } from "react-redux";
 import {login} from './../../reducers/login'
-
+import swal from 'sweetalert'
 
 const Login = () => {
   const dispatch=useDispatch();
@@ -38,7 +38,9 @@ const Login = () => {
         role:role
     
       }
+      
       dispatch(login(data));
+      swal("Succesfully login")
       navigate ("/")
     
   };

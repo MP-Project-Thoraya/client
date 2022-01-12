@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import './style.css'
 import {logout} from "./../../reducers/login"
 import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineUser } from "react-icons/ai";
+import {  IoExit } from "react-icons/io5";
+
 
 const NavBar = () => {
 
@@ -19,13 +22,14 @@ const NavBar = () => {
   };
 
   return (
-    <div className="top">
+   
     <div className="topleft">
-        <i className="logo">my service-Busines</i>
+       
   
    
     <div className="topcenter">
     <ul className="toplist">
+    <i className="logo"> <Link to="/">my service </Link> </i>
     <Link to="">
         <li className="toplistitem">Home</li>
       </Link>
@@ -39,20 +43,19 @@ const NavBar = () => {
       <Link to="/Registration">
         <li  className="toplistitem" >SignUp</li>
       </Link>
-
-      <button onClick={signOut}>logOut</button>
        
-      
       <div className="topright">
-      <Link to="/userprofile">
-<img className="topimg" src="https://www.osmpic.com/wp-content/uploads/2019/03/PicsArt_03-21-10.30.59-901x1024.jpg"  alt="no img" />
-</Link>  
+
+      <Link to="/userprofile"><AiOutlineUser/> </Link> 
+      <button className="lout" onClick={signOut}> <IoExit/></button> 
+
+ 
         </div>
 
     </ul>
     </div>
     </div>
-    </div>
+   
     
   );
 };

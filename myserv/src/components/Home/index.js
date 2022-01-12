@@ -15,7 +15,7 @@ const Home =()=> {
 <Header />
     <div className="home"> 
     <Content/>
-     {<Sidebar/>}
+     { <Sidebar/> }
 
     </div> 
     </>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import {BsPersonSquare, BsFillTrashFill} from "react-icons/bs";
+import Dashboard from "../Dashboard";
 
 import {useSelector} from 'react-redux'
 
@@ -14,6 +15,9 @@ const Userprofile=()=> {
       <div className="userprofile">
          <div className="userprofilewa">
          <div className="userprofiletitle">
+ 
+
+
                  <span className="userprofileupdate">Update Your Account</span>
                  <span className="userprofiledelete"> <BsFillTrashFill/>  Delete Account</span>
               </div>
@@ -39,7 +43,6 @@ const Userprofile=()=> {
   
         </form>
         </div>
-      
       </div>
     );
   }

@@ -1,51 +1,105 @@
-import React from "react";
+import axios from "axios";
 import "./style.css";
-import {BsPersonSquare, BsFillTrashFill} from "react-icons/bs";
-import Dashboard from "../Dashboard";
+import React, { useEffect, useState } from "react";
+import { BsFillTrashFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import {useSelector} from 'react-redux'
+const Userprofile = () => {
+  let navigate = useNavigate();
+  const [users, setUsers] = useState([]);
 
-const Userprofile=()=> {         
-      const state=useSelector((state)=>{
-      console.log("state.signIn.userName",state.signIn.userName)
-        return state;
-    });
-
-       return (
-      <div className="userprofile">
-         <div className="userprofilewa">
-         <div className="userprofiletitle">
- 
+  const state = useSelector((state) => {
+    console.log("state.signIn.userName", state.signIn.userId);
+    return state;
+  });
 
 
-                 <span className="userprofileupdate">Update Your Account</span>
-                 <span className="userprofiledelete"> <BsFillTrashFill/>  Delete Account</span>
-              </div>
-              <form className="settingsform">
-              <label>Profile Picture </label>
-              <form className="settingspp"></form>
-                <img className="imgpr" src="https://th.bing.com/th/id/OIP.aSjx4cNX2_-wtxl2rcc5XQHaLY?pid=ImgDet&rs=1" alt="no img"/>
-   
-  {/* <label htmlFor="fileInput"> <i className="settingPPIcon"> <BsPersonSquare/></i> </label> */}
-  <input type="file" id="finleinput" style={{display:"none"}}/>
-  
-  <label>Username </label>
-  <input type="text" placeholder="username" />
-  
-  <label> Email </label>
-  <input type="email" placeholder="example@gmail.com" />
-  
-  <label>Password </label>
-  
-  <input type="password"  />
-  
-  <button className="userprofilesubmit">Update</button>
-  
-        </form>
-        </div>
-      </div>
+  //update User account
+
+  const updateuser = async (e) => {
+    e.preventDefault();
+    console.log();
+
+    const result = await axios.put(
+      `http://localhost:5000/updateuser/${state.signIn.userId}`,
+      {
+        email: e.target.email.value,
+        password: e.target.password.value,
+        username: e.target.username.value,
+      },
+      { headers: { Authorization: `Bearer ${state.signIn.token}` } }
     );
-  }
-  
-  export default Userprofile;
-  
+
+    console.log(result.data);
+  };
+
+  ///////////////delete users
+
+  const getUsers = async () => {
+    console.log(state.signIn.userId);
+    const res = await axios.get(`http://localhost:5000/one_user/${state.signIn.userId}`);
+    setUsers(res.data);
+  };
+
+  const deleteuser = async () => {
+    const result = await axios.delete(`http://localhost:5000/delaccount/${state.signIn.userId}`, {
+      headers: {
+        Authorization: `Bearer ${state.signIn.token}`,
+      },
+    });
+    navigate('/Login')
+  };
+
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  useEffect(() => {
+    console.log(users);
+  }, [users])
+  return (
+    <div className="userprofile">
+      <div className="userprofilewa">
+        <div className="userprofiletitle">
+          <span className="userprofileupdate">Update Your Account</span>
+
+          <span onClick={deleteuser} className="userprofiledelete">
+            <BsFillTrashFill /> Delete Account
+          </span>
+        </div>
+        <form className="settingsform" onSubmit={updateuser}>
+          <label>Profile Picture </label>
+          <form className="settingspp"></form>
+          <img
+            className="imgpr"
+            src="https://th.bing.com/th/id/OIP.aSjx4cNX2_-wtxl2rcc5XQHaLY?pid=ImgDet&rs=1"
+            alt="no img"
+          />
+
+          {/* <label htmlFor="fileInput"> <i className="settingPPIcon"> <BsPersonSquare/></i> </label> */}
+          {/* <input type="file" id="finleinput" style={{ display: "none" }} /> */}
+
+          <label>Username </label>
+          <input type="text" placeholder="username" name="username" defaultValue={users.username}/>
+
+          <label> Email </label>
+          <input type="email" placeholder="example@gmail.com" name="email"  defaultValue={users.email}/>
+
+          <label>Password </label>
+
+          <input type="password" name="password" placeholder="Enter new password.."/>
+
+          <button
+            type="submit"
+            className="userprofilesubmit"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Userprofile;

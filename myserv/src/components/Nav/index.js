@@ -5,6 +5,7 @@ import { logout } from "./../../reducers/login";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoExit } from "react-icons/io5";
+import {FaUsersCog} from "react-icons/fa";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ const NavBar = () => {
       <div className="topcenter">
         <ul className="toplist">
           <i className="logo">
-            <Link to="/">my service </Link>{" "}
+          {state.signIn && (
+            <Link to="/">my service </Link> )}
           </i>
           <Link to="">
             <li className="toplistitem">Home</li>
@@ -46,7 +48,7 @@ const NavBar = () => {
           </Link>
 
           {state.signIn.role === "admin" && (
-          <Link to="/Admindashboard">Admin Dashboard
+          <Link to="/Admindashboard"><FaUsersCog/>
             <li className="toplistitem"></li>
           </Link>
           )}

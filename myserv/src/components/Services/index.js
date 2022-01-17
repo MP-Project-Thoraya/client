@@ -2,12 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {BsPersonSquare, BsFillTrashFill} from "react-icons/bs";
+import { BsFillTrashFill} from "react-icons/bs";
+import {AiTwotoneEdit,AiOutlineClose,AiOutlineSend ,AiOutlineMore} from "react-icons/ai";
+import swal from 'sweetalert'
+import {BiImageAdd} from "react-icons/bs";
 import AllServices from "../AllServices";
 import Onepageservice from "../AllServices";
 import "./style.css";
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+import {IoMdImage, IoMdCreate } from "react-icons/io";
 
 const Services = () => {
   let navigate = useNavigate();
@@ -16,6 +20,7 @@ const Services = () => {
   const [progress, setProgress] = useState(0);
   const [images, setImages] = useState([]);
   const [post, setPost] = useState([]);
+
   const [commments, setcommments] = useState([]);
 
   const newPost = async (e) => {
@@ -23,6 +28,7 @@ const Services = () => {
     const result = await axios.post(
       `http://localhost:5000/create_post`,
       {
+        //userId: user._id,
         description: e.target.description.value,
         title: e.target.title.value,
         image: images,
@@ -32,6 +38,7 @@ const Services = () => {
     console.log(result.data);
     getPosts();
     setaddService(false);
+    swal("Posted successfully",  "success");
   };
 
   const state = useSelector((state) => {
@@ -75,6 +82,32 @@ const Services = () => {
       console.log(error);
     }
   };
+
+
+
+
+  const updatpost = async (id) => {
+    console.log('iiii', id);
+
+    const result = await axios.put(
+      `http://localhost:5000/update/${id}`,
+      {
+        description: e.target.description.value,
+        image: e.target.image.value,
+        title: e.target.title.value,
+      },
+      { headers: { Authorization: `Bearer ${state.signIn.token}` } }
+    );
+
+    console.log(result);
+   
+  };
+
+
+
+
+
+
 
   useEffect(() => {
     getPosts();
@@ -125,35 +158,56 @@ const Services = () => {
         },
       }
     );
-    navigate('/myservice');
+
+
+    swal({
+     
+      text: "Are you sure to delete the posts ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: false,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Your Post  has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your Post is safe!");
+      }
+    });
+    navigate("/myservice");
   };
   ////////////////////////
 
   return (
-    <div className="c">
-      <h1>Serivces component</h1>
+    <div className="con">
+      <div className="sharewapper">
+      <div className="descr">
+      <h3>Describe your service here. What makes it great? Use short catchy text to tell people what you offer, and the benefits they will receive. A great description gets readers in the mood, and makes them more likely to go ahead and book.</h3>
 
-      <button onClick={() => setaddService(true)}>Add service</button>
-
+      <button className="buttonhome" onClick={() => setaddService(true)}>Add service</button>
+</div>
       {addService ? (
-        <div className="post">
+        <div className="share">
      
           <form onSubmit={newPost} className="writepost">
-            <div className="postgroup">
+            
               <input
                 type="text"
                 placeholder="title"
-                className="textarea1"
+                className="shareinput"
                 name="title"
                 autoFocus={true}
               />
+              <hr />
               <textarea
                 placeholder="write here"
                 type="text"
                 name="description"
-                className="textarea"
+                className="shareinput"
               ></textarea>
-
+<hr />
               <div className="upload">
                 <input className="labalimg"
                   type="file"
@@ -164,38 +218,64 @@ const Services = () => {
                   id="img"
                   style={{ display: "none" }}
                 />
-                <label htmlFor="img" className="labalimg">Upload Images</label>
-                {!(progress == 0) ? (
+                <div className="sharebottom">
+              <div className="shareoptions">
+              <div className="shareoption">
+                <label htmlFor="img" className="shareoption"><IoMdImage className="shareicon"/>Image</label>
+              
+              
+          <button onClick={() => setaddService(false)}><AiOutlineClose/></button>
+
+
+              <button type="submit" className="button">
+               <AiOutlineSend/>
+              </button>
+              </div>
+              </div>
+            </div>
+ 
+              </div>
+             <div className="imagesPost">
+  {!(progress == 0) ? (
                   <div className="progress">
                     <p>the image will download {progress}%</p>
                   </div>
                 ) : null}
-              </div>
-              <div className="imagesPost">
-                {images?.map((image) => (
-                  <img src={image} width="400px" height="200px" />
+
+                {images?.map((image)  => (
+                  <img src={image} width="400px" height="270px" />
                 ))}
               </div>
-
-              <br></br>
-              <button type="submit" className="button">
-                send
-              </button>
-            </div>
+           
           </form>
+          
 
-          <button onClick={() => setaddService(false)}>Cancel</button>
-        </div>
+         
+          </div>
+        
+        
+       
       ) : (
-        <>
-          <h1>All services</h1>
-          <div className="post">
+        < div className="post"  >
+          <div className="postwrapper">
+          <div className="posttop">
+
+            
+          <div className="postleft">
             {post?.map((post, i) => (
               <>
-                <h1>
-                  Post {i + 1}: {post?.title}
-                </h1>
-                <button onClick={() => {  deletePost(post._id);
+               <div className="main">
+                <h3>
+                  {post?.title}
+                  
+                </h3>
+                <span className="postdate" >5 mins age</span>
+
+                <div className="postright">
+                      <AiOutlineMore/>
+
+                </div>
+                < button onClick={() => {  deletePost(post._id);
                   }}
                   className="deleteBtn"
                 >  <BsFillTrashFill/>
@@ -204,10 +284,20 @@ const Services = () => {
 
 
 
+                <button onClick={() => {  updatpost (post._id);
+                  }}
+                  className="editBtn"
+                > 
+                 <AiTwotoneEdit/>
+                 
+                </button>
+                </div>
+             
+
                 <h4>Author: {post?.createby?.username}</h4>
                 <p>{post?.description}</p>
                 {post?.image?.map((i) => (
-                  <img src={i} alt="" width="400px" />
+                  <img src={i} alt="" width="350px"  height="px"/>
                 ))}
 
 
@@ -217,7 +307,7 @@ const Services = () => {
                 >
                   <div className="commentHead">
                     <h3>New Comment</h3>
-                    <button type="submit">Send Comment</button>
+                    <button type="submit"><AiOutlineSend/></button>
                   </div>
                   <div className="commentTail">
                     <textarea
@@ -266,9 +356,12 @@ const Services = () => {
               </>
             ))}
             <br />
+            </div>
+            </div>
           </div>
-        </>
+        </div>
       )}
+      </div>
     </div>
   );
 };

@@ -41,8 +41,7 @@ case "LOGOUT"://<< this type clear token and localstorage
         const roleStorage = localStorage.getItem("role");
         if (tokenStorage &&userIdStorage &&userNameStorage &&roleStorage )
         
-        return { token: tokenStora
-          ge ,role:roleStorage,userName:userNameStorage,userId:userIdStorage};
+        return { token: tokenStorage ,role:roleStorage,userName:userNameStorage,userId:userIdStorage};
         else return state;
     }
   };

@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Userprofile from "./components/Userprofile";
 import "./App.css";
 import { Routes, Route } from "react-router";
+import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 
@@ -29,7 +30,7 @@ const App = () => {
           <Route exact path="/Registration" element={<Registration />} />
           <Route exact path="/myservice" element={<Services  />} />
           <Route exact path="/userprofile" element={<Userprofile />} />
-
+          <Route exact path="/Admindashboard" element={<Dashboard />} />
           <Route
             path="*"
             render={() => {

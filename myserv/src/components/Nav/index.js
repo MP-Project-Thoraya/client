@@ -1,59 +1,70 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './style.css'
-import {logout} from "./../../reducers/login"
+import "./style.css";
+import { logout } from "./../../reducers/login";
 import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineUser } from "react-icons/ai";
+import { IoExit } from "react-icons/io5";
+import {FaUsersCog} from "react-icons/fa";
 
 const NavBar = () => {
-
   const navigate = useNavigate();
+
   const state = useSelector((state) => {
     return state;
   });
+  console.log(state.signIn.role,"<<<<<<<<<<<");
+
   console.log(state, "state");
   const dispatch = useDispatch();
 
   const signOut = () => {
-    dispatch(logout({ avatar: "", role: "", token: "", userId: "",   userName: ""}));
-    navigate('/Login')
+    dispatch(
+      logout({ avatar: "", role: "", token: "", userId: "", userName: "" })
+    );
+    navigate("/Login");
   };
 
   return (
-    <div className="top">
     <div className="topleft">
-        <i className="logo">my service-Busines</i>
-  
-   
-    <div className="topcenter">
-    <ul className="toplist">
-    <Link to="">
-        <li className="toplistitem">Home</li>
-      </Link>
-      <Link to="/myservice">
-        <li   className="toplistitem"  >services</li>
-      </Link>
-  
-      <Link to="/Login">
-        <li className="toplistitem"  >Log in</li>
-      </Link>
-      <Link to="/Registration">
-        <li  className="toplistitem" >SignUp</li>
-      </Link>
+      <div className="topcenter">
+        <ul className="toplist">
+          <i className="logo">
+          {state.signIn && (
+            <Link to="/">my service </Link> )}
+          </i>
+          <Link to="">
+            <li className="toplistitem">Home</li>
+          </Link>
+          <Link to="/myservice"> 
+            <li className="toplistitem">services</li>
+          </Link>
 
-      <button onClick={signOut}>logOut</button>
-       
-      
-      <div className="topright">
-      <Link to="/userprofile">
-<img className="topimg" src="https://www.osmpic.com/wp-content/uploads/2019/03/PicsArt_03-21-10.30.59-901x1024.jpg"  alt="no img" />
-</Link>  
-        </div>
+          <Link to="/Login">
+            <li className="toplistitem">Log in</li>
+          </Link>
+          <Link to="/Registration">
+            <li className="toplistitem">SignUp</li>
+          </Link>
 
-    </ul>
+          {state.signIn.role === "admin" && (
+          <Link to="/Admindashboard"><FaUsersCog/>
+            <li className="toplistitem"></li>
+          </Link>
+          )}
+
+          <div className="topright">
+            <Link to="/userprofile">
+              <AiOutlineUser />{" "}
+            </Link>
+            <button className="lout" onClick={signOut}>
+              {" "}
+              <IoExit />
+            </button>
+          </div>
+        </ul>
+      </div>
     </div>
-    </div>
-    </div>
-    
   );
 };
 

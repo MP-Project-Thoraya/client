@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css'
+import Slideshow from "../Slideshow";
 
 
 const Header =()=> {
@@ -10,8 +11,7 @@ const Header =()=> {
 <span  className="headertitlemain">Welcome in my Services-Business Website</span>
 
       </div>
-      <img className="headerimg" src="https://www.stancoe.org/sites/default/files/styles/banner/public/banners/Administration.jpg?itok=jXKB2uR2"
-      alt="no img"/>
+    <Slideshow/>
       
 
 

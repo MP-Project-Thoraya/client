@@ -5,7 +5,7 @@ import axios from "axios";
 import './style.css'
 import { useDispatch } from "react-redux";
 import {login} from './../../reducers/login'
-
+import swal from 'sweetalert'
 
 const Login = () => {
   const dispatch=useDispatch();
@@ -38,7 +38,9 @@ const Login = () => {
         role:role
     
       }
+      
       dispatch(login(data));
+      swal("Succesfully login")
       navigate ("/")
     
   };
@@ -96,7 +98,7 @@ const Login = () => {
               Register
             </Button>
       
-            <img className="imggoogle" src="https://th.bing.com/th/id/R.fb13e489b588b98b0d85eb7428a484fe?rik=7sWHBBz%2frsdzkg&pid=ImgRaw&r=0" alt="no img"/>
+         
 
           </Form.Group>
         </form>

@@ -10,7 +10,7 @@ const Sidebar =()=> {
 <img className="img" src="https://th.bing.com/th/id/OIP.SF2zhGccc4vnWGESUGWPiQHaHa?pid=ImgDet&w=600&h=600&rs=1" alt="no img"
 />
 
-<p>Business and Services website that supports a business but does not produce a tangible good.
+<p>Services website that supports a business but does not produce a tangible good.
 this website service aligns it assets with the people who represent the business goals, thus supporting researchers and meeting people's needs with less time and faster services.
 </p>
 </div>

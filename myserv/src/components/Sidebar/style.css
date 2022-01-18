@@ -3,7 +3,7 @@ width: 30%;
 flex: 3;
 margin-top: 30px;
 padding-bottom: 20px;
-background-color: rgb(216, 221, 231);
+background-color: rgb(255, 255, 255);
 font-family:   'Lobster', cursive;
 font-size:large;
 color :rgb(92, 108, 141);
@@ -12,7 +12,7 @@ border-bottom:  2px solid rgb(67, 81, 109);
 }
 
 .img {
-width:350px;
+width:300px;
 
 
 

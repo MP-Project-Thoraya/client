@@ -1,6 +1,34 @@
-.post {
+.container {
+  display: flex;
+  justify-content: center;
+}
 
-margin-top: 100px;
-margin-bottom: 70px;
+.subtitle {
+  font-size: 40px;
+  color: brown;
+  font-family: "Lobster", cursive;
+  border-bottom: 2px solid brown;
+}
+
+.services {
+
+  width: 60%;
+}
+
+.service {
+  padding: 15px;
+  margin-bottom: 90px;
+  background-color: whitesmoke;
+  height: 83%;
+}
+
+
+
+.images {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 
 }
+

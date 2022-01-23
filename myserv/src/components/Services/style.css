@@ -1,12 +1,10 @@
-.c{
-padding-left: 20rem;
 
-}
 
 .deleteBtn{
     color: red;
     background-color: white;
     border-color: white;
+    font-size: 1px;
   
 }
 
@@ -16,40 +14,40 @@ display: flex;
 justify-content: center;
 }
 
-.editBtn{
-    color: rgb(24, 22, 22);
-    background-color: white;
-    border-color: white;
-  margin-left: 7px;
-}
 .descr {
 
     font-size: 15px;
 width: 70%;
-
+display: flex;
+justify-content: flex-end;
     font-family:   'Lobster', cursive;
 
 }
 
 .share {
     margin-top: 20px;
-width: 60%;
-height: 400px;
-border-radius: 10px;
-box-shadow: 0px 0px 16px -8px rgb(126, 139, 126);
-
+width: 50%;
+height: 450px;
+border-radius: 50px;
+box-shadow: 0px 0px 16px -8px rgb(19, 18, 18);
+display: flex;
+justify-content: center;
+font-size: 20px;
+color: rgb(205, 50, 50);
 }
 
 .sharewapper {
-padding: 100px;
 
+padding-left: 20rem;
 
 }
 
 .shareinput{
 
 border: none;
-width: 60%;
+width: 100%;
+font-size: 18px;
+margin-top: 30px;
 
 }
 
@@ -83,25 +81,195 @@ cursor: pointer ;
 
 .post {
 
+    width: 53%;
+    border-radius: 40px;
+ display: flex;
+ justify-content: center;
 
-    width: 100%;
-    border-radius: 10px;
- 
-box-shadow: 0px 0px 16px -8px rgb(126, 139, 126);
-margin: 30px 0;
+margin: 0px;
+margin-top: 30px;
 
 }
 .postwrapper {
 
-    padding: 20px;
+   width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+     
 
 
 }
 
 
 .posttop {
-display: flex;
-align-items: center;
-justify-content: space-between;
+font-size: 10px;
+margin-left: 30rem;
+
 }
 
+
+
+.seemore{
+width: 200px;
+border: none;
+padding: 15px;
+border-radius: 30px;
+font-weight: bold;
+display: flex;
+justify-content: center;
+justify-items: center;
+
+
+}
+
+.deletebtn1 {
+    color: rgb(206, 7, 7);
+    cursor: pointer;
+    transition: 0.5s ease;
+    margin-left: 15px;;
+    margin-top: 5px;
+background-color:  rgb(238, 236, 236);
+  font-size: 18px;
+  padding-left: 21rem;
+  border: none;
+  }
+  
+  .deletebtn:hover {
+    transform: scale(1.25) perspective(1px);
+  }
+
+
+  
+
+  
+.commenttext {
+    margin-left: 15px;
+    background-color: rgb(206, 199, 199);
+    border-style: none;
+    padding: 2px;
+    border-radius: 7px;
+    border-bottom: 0.5px solid rgb(255, 255, 255);
+    text-align: left;
+    width: 420px;
+    height: 50px;
+    
+  }
+  
+  .commentsend {
+    border-style: none;
+   background-color: rgb(238, 236, 236);
+    color: rgb(53, 68, 24);
+    font-size: 19px;
+  margin-bottom: 10px;
+    transition: 0.5s ease;
+  
+  }
+
+
+
+  .postimg{ height: 20rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  
+}
+
+
+
+
+.bottonadd {
+background-color: white;
+font-size: 40px;
+color: rgb(97, 138, 15);
+border-style: hidden;
+cursor: pointer;
+transition: 0.5s ease;
+}
+
+.bottonadd:hover {
+    transform: scale(1.25) perspective(1px);
+  }
+
+
+  .cancelbtn {
+    color: rgb(206, 7, 7);
+    cursor: pointer;
+    transition: 0.5s ease;
+    margin-left: 15px;;
+    margin-top: 5px;
+  background-color: white;
+  border: white;
+  font-size: 25px;
+  }
+  
+  .cancelbtn:hover {
+    transform: scale(1.25) perspective(1px);
+  }
+
+
+  .sendbtn  {
+    color: rgb(28, 102, 7);
+    cursor: pointer;
+    transition: 0.5s ease;
+    margin-left: 15px;;
+    margin-top: 5px;
+  background-color: white;
+  border: white;
+  font-size: 25px;
+  }
+  
+  .sendbtn:hover {
+    transform: scale(1.25) perspective(1px);
+  }
+  .deletecomment{
+     color:rgb(94, 92, 92);
+     border:none;
+     background-color: rgb(233, 230, 230);
+    
+
+  }
+  .deletecomment:hover {
+    transform: scale(1.25) perspective(1px);
+  }
+
+
+
+  .realComment{
+      background-color: rgb(233, 230, 230);
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+     
+  }
+
+
+  .commentauthr{
+     color: rgb(126, 123, 123);
+     margin-left: 7px;
+
+  }
+
+  .dateP{
+color: rgb(156, 152, 152);
+margin-left: 7px;
+
+  }
+
+  .spost{
+background-color: rgb(238, 236, 236);
+border-radius: 30px;
+border: 2px solid black;
+margin-bottom: 30px;
+
+  }
+
+
+  .length{
+color:rgb(139, 115, 115) ;
+
+  }
+
+  .realcommentData{
+    
+  }

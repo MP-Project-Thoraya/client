@@ -37,9 +37,10 @@ const Registration = () => {
     <div className="signupmain">
     <div className="signup">
     <Container>
-      <h1 className="">Sign Up</h1>
+   
       <form action="/register" method="POST">
         <Form.Group className="mt-5 mx-5" controlId="formBasicUsername">
+           <h1 className="">Sign Up</h1>
             <br />
           <Form.Label>Username</Form.Label>
           <br />
@@ -55,6 +56,9 @@ const Registration = () => {
           />
         </Form.Group>
         <Form.Group className="m-5" controlId="formBasicEmail">
+
+
+            
           <Form.Label>Email address</Form.Label>
           <br />
           <Form.Control

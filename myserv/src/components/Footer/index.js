@@ -17,7 +17,7 @@ const Footer = () => {
          
         </div>
         <div className="part">
-         Myservices-Business Copyright © 2021
+         Myservices Copyright © 2022
         </div>
       </div>
     </>

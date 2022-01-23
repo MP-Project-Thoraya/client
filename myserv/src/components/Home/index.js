@@ -13,11 +13,21 @@ const Home =()=> {
     <>
 
 <Header />
+<Content/>
+{ <Sidebar/> }
+
+
     <div className="home"> 
-    <Content/>
-     { <Sidebar/> }
+
+ 
+
+
+   
 
     </div> 
+
+     
+
     </>
   );
   

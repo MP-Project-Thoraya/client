@@ -1,14 +1,16 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import { logout } from "./../../reducers/login";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoExit } from "react-icons/io5";
-import {FaUsersCog} from "react-icons/fa";
+import {FaUsersCog,FaUserEdit} from "react-icons/fa";
 
 const NavBar = () => {
+
   const navigate = useNavigate();
+
 
   const state = useSelector((state) => {
     return state;
@@ -36,33 +38,47 @@ const NavBar = () => {
           <Link to="">
             <li className="toplistitem">Home</li>
           </Link>
-          <Link to="/myservice"> 
-            <li className="toplistitem">services</li>
-          </Link>
 
+          {state.signIn.token && (
+          <Link to="/category"> 
+            <li className="toplistitem">services</li>
+          </Link> )}
+
+ 
+          {! state.signIn.token && (
+  <>
           <Link to="/Login">
             <li className="toplistitem">Log in</li>
           </Link>
+         
+          
           <Link to="/Registration">
             <li className="toplistitem">SignUp</li>
-          </Link>
-
+          </Link> 
+          </>
+           )}
+      <div className="right">
+      
           {state.signIn.role === "admin" && (
           <Link to="/Admindashboard"><FaUsersCog/>
             <li className="toplistitem"></li>
           </Link>
           )}
 
-          <div className="topright">
+          {state.signIn.token && (
             <Link to="/userprofile">
-              <AiOutlineUser />{" "}
-            </Link>
+              <FaUserEdit />{" "}
+            </Link> )}
+
+            {state.signIn.token && ( 
             <button className="lout" onClick={signOut}>
               {" "}
               <IoExit />
-            </button>
-          </div>
+            </button>  )}
+            </div>
+          
         </ul>
+        
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ import { Routes, Route } from "react-router";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-
+import AllServices from "./components/AllServices";
+import Business from "./components/Business";
 
 
 const App = () => {
@@ -24,11 +25,14 @@ const App = () => {
         <Nav />
         
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Login />,<Home />} />
+          <Route exact path="/home" element={<Home />} />
           {/* <Route exact path="/myservice" element={ <Login />,<Services/>  }/> */}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Registration" element={<Registration />} />
           <Route exact path="/myservice" element={<Services  />} />
+          <Route exact path="/category" element={<AllServices />} />
+          <Route exact path="/business" element={< Business />} />
           <Route exact path="/userprofile" element={<Userprofile />} />
           <Route exact path="/Admindashboard" element={<Dashboard />} />
           <Route

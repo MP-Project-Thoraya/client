@@ -2,27 +2,29 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BsFillTrashFill} from "react-icons/bs";
-import {AiTwotoneEdit,AiOutlineClose,AiOutlineSend ,AiOutlineMore} from "react-icons/ai";
-import swal from 'sweetalert'
-import {BiImageAdd} from "react-icons/bs";
-import AllServices from "../AllServices";
-import Onepageservice from "../AllServices";
+import { BsFillTrashFill } from "react-icons/bs";
+import { IoIosAddCircle } from "react-icons/io";
+import {
+  AiTwotoneEdit,
+  AiOutlineClose,
+  AiOutlineSend,
+  AiFillDelete,
+} from "react-icons/ai";
+import swal from "sweetalert";
+import { FaComment } from "react-icons/fa";
 import "./style.css";
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import {IoMdImage, IoMdCreate } from "react-icons/io";
+import { IoMdImage } from "react-icons/io";
 
 const Services = () => {
   let navigate = useNavigate();
-  const [addService, setaddService] = useState(false);
 
+  const [addService, setaddService] = useState(false);
   const [progress, setProgress] = useState(0);
   const [images, setImages] = useState([]);
   const [post, setPost] = useState([]);
-
   const [commments, setcommments] = useState([]);
-
   const newPost = async (e) => {
     e.preventDefault();
     const result = await axios.post(
@@ -38,7 +40,7 @@ const Services = () => {
     console.log(result.data);
     getPosts();
     setaddService(false);
-    swal("Posted successfully",  "success");
+    swal("Posted successfully", "success");
   };
 
   const state = useSelector((state) => {
@@ -83,14 +85,11 @@ const Services = () => {
     }
   };
 
-
-
-
-  const updatpost = async (id) => {
-    console.log('iiii', id);
+  const updatpost = async (e) => {
+    e.preventDefault();
 
     const result = await axios.put(
-      `http://localhost:5000/update/${id}`,
+      `http://localhost:5000/update/${state.signIn.userId}`,
       {
         description: e.target.description.value,
         image: e.target.image.value,
@@ -100,14 +99,7 @@ const Services = () => {
     );
 
     console.log(result);
-   
   };
-
-
-
-
-
-
 
   useEffect(() => {
     getPosts();
@@ -149,25 +141,33 @@ const Services = () => {
 
   ///////////////////////
 
-  const deletePost = async (id) => {
-    await axios.delete(
-      `http://localhost:5000/deleteposts/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${state.signIn.token}`,
-        },
-      }
-    );
+  const deletecomment = async (id) => {
+    try {
+      const resp = await axios.delete(
+        `http://localhost:5000/deletecomment/${id}`,
+        {
+          headers: { Authorization: `Bearer ${state.signIn.token}` },
+        }
+      );
+      getComments();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
+  const deletePost = async (id) => {
+    await axios.delete(`http://localhost:5000/deleteposts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${state.signIn.token}`,
+      },
+    });
 
     swal({
-     
       text: "Are you sure to delete the posts ?",
       icon: "warning",
       buttons: true,
       dangerMode: false,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
         swal("Your Post  has been deleted!", {
           icon: "success",
@@ -183,33 +183,37 @@ const Services = () => {
   return (
     <div className="con">
       <div className="sharewapper">
-      <div className="descr">
-      <h3>Describe your service here. What makes it great? Use short catchy text to tell people what you offer, and the benefits they will receive. A great description gets readers in the mood, and makes them more likely to go ahead and book.</h3>
+        <div className="descr">
+          <h3>
+            Describe your service here. What makes it great? Use short catchy
+            text to tell people what you offer...?
+          </h3>
 
-      <button className="buttonhome" onClick={() => setaddService(true)}>Add service</button>
-</div>
-      {addService ? (
-        <div className="share">
-     
-          <form onSubmit={newPost} className="writepost">
-            
+          <button className="bottonadd" onClick={() => setaddService(true)}>
+            <IoIosAddCircle />
+          </button>
+        </div>
+        {addService ? (
+          <div className="share">
+            <form onSubmit={newPost} className="writepost">
               <input
                 type="text"
-                placeholder="title"
+                placeholder="Title"
                 className="shareinput"
                 name="title"
                 autoFocus={true}
               />
               <hr />
               <textarea
-                placeholder="write here"
+                placeholder="Describe service here"
                 type="text"
                 name="description"
                 className="shareinput"
               ></textarea>
-<hr />
+              <hr />
               <div className="upload">
-                <input className="labalimg"
+                <input
+                  className="labalimg"
                   type="file"
                   accept=".gif,.jpg,.jpeg,.png"
                   onChange={(e) => {
@@ -219,148 +223,173 @@ const Services = () => {
                   style={{ display: "none" }}
                 />
                 <div className="sharebottom">
-              <div className="shareoptions">
-              <div className="shareoption">
-                <label htmlFor="img" className="shareoption"><IoMdImage className="shareicon"/>Image</label>
-              
-              
-          <button onClick={() => setaddService(false)}><AiOutlineClose/></button>
+                  <div className="shareoptions">
+                    <div className="shareoption">
+                      <label htmlFor="img" className="shareoption">
+                        <IoMdImage className="shareicon" />
+                        Image
+                      </label>
 
+                      <button
+                        className="cancelbtn"
+                        onClick={() => setaddService(false)}
+                      >
+                        <AiOutlineClose />
+                      </button>
 
-              <button type="submit" className="button">
-               <AiOutlineSend/>
-              </button>
+                      <button type="submit" className="sendbtn">
+                        <AiOutlineSend />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div>
-            </div>
- 
-              </div>
-             <div className="imagesPost">
-  {!(progress == 0) ? (
+              <div className="imagesPost">
+                {!(progress == 0) ? (
                   <div className="progress">
                     <p>the image will download {progress}%</p>
                   </div>
                 ) : null}
 
-                {images?.map((image)  => (
-                  <img src={image} width="400px" height="270px" />
+                {images?.map((image) => (
+                  <img src={image} width="200px" height="200px" />
                 ))}
               </div>
-           
-          </form>
-          
-
-         
+            </form>
           </div>
-        
-        
-       
-      ) : (
-        < div className="post"  >
-          <div className="postwrapper">
-          <div className="posttop">
+        ) : (
+          <div className="post">
+            <div className="postwrapper">
+              <div className="postleft">
+                {post?.map((post, i) => (
+                  <>
+                    <div className="main">
+                      <div className="posttop">
+                        {/* <button
+                          onClick={() => {
+                            updatpost(post._id);
+                          }}
+                          className="postright"
+                        >
+                          <AiTwotoneEdit />
+                        </button> */}
+                      </div>
+                    </div>
+                    <div className="spost">
+                      <span className="dateP">
+                        {" "}
+                        {post.createdAt.slice(0, 10)}
+                      </span>
 
-            
-          <div className="postleft">
-            {post?.map((post, i) => (
-              <>
-               <div className="main">
-                <h3>
-                  {post?.title}
-                  
-                </h3>
-                <span className="postdate" >5 mins age</span>
+                      {state.signIn.userId === post.createby._id ||
+                      state.signIn.role === "admin" ? (
+                        <button
+                          className="posttop"
+                          onClick={() => {
+                            deletePost(post._id);
+                          }}
+                          className="deletebtn1"
+                        >
+                          <BsFillTrashFill />
+                        </button>
+                      ) : (
+                        <></>
+                      )}
 
-                <div className="postright">
-                      <AiOutlineMore/>
+                      <h4>by: {post?.createby?.username}</h4>
+                      <h3>{post?.title}</h3>
+                      <p>{post?.description}</p>
 
-                </div>
-                < button onClick={() => {  deletePost(post._id);
-                  }}
-                  className="deleteBtn"
-                >  <BsFillTrashFill/>
-                 
-                </button>
+                      {post?.image?.map((i) => (
+                        <img
+                          className="postimg"
+                          src={i}
+                          alt=""
+                          width="450px"
+                          height="300px"
+                        />
+                      ))}
 
-
-
-                <button onClick={() => {  updatpost (post._id);
-                  }}
-                  className="editBtn"
-                > 
-                 <AiTwotoneEdit/>
-                 
-                </button>
-                </div>
-             
-
-                <h4>Author: {post?.createby?.username}</h4>
-                <p>{post?.description}</p>
-                {post?.image?.map((i) => (
-                  <img src={i} alt="" width="350px"  height="px"/>
-                ))}
-
-
-                <form
-                  className="comments_form"
-                  onSubmit={(e) => sendComment(e, post._id)}
-                >
-                  <div className="commentHead">
-                    <h3>New Comment</h3>
-                    <button type="submit"><AiOutlineSend/></button>
-                  </div>
-                  <div className="commentTail">
-                    <textarea
-                      name="comment"
-                      placeholder="wirite here comments"
-                      required
-                      cols="50"
-                      rows=""
-                    ></textarea>
-                  </div>
-                  <div className="numComment">
-                    <h3>
-                      {
-                        commments?.filter((i) => i.onservicepost == post._id)
-                          .length
-                      }{" "}
-                      Comments
-                    </h3>
-                  </div>
-                  {console.log("my comments", commments)}
-                  {commments
-                    ?.filter((i) => i.onservicepost == post._id)
-                    .map((comment, index) => {
-                      return (
-                        <div className="realComment" key={index}>
-                          <hr />
-                          <div className="realcommentRow">
-                            <div className="realcommentData">
-                              <h3>{comment.createby.username}</h3>
-                              <p>{comment.text}</p>
-                              <p className="dateP">
-                                {comment.createdAt.slice(0, 10)}
-                                {comment.createdAt.slice(11, 16)}
-                              </p>
-                            </div>
-
-
-
+                      <form
+                        className="comments_form"
+                        onSubmit={(e) => sendComment(e, post._id)}
+                      >
+                        <div className="commentTail">
+                          <div className="numComment">
+                            <h3 className="length">
+                              {
+                                commments?.filter(
+                                  (i) => i.onservicepost == post._id
+                                ).length
+                              }
+                              <FaComment />
+                            </h3>
                           </div>
+
+                          <textarea
+                            className="commenttext "
+                            name="comment"
+                            placeholder="write here comments"
+                            required
+                            cols="50"
+                          ></textarea>
+                          <button className="commentsend" type="submit">
+                            <AiOutlineSend />
+                          </button>
                         </div>
-                      );
-                    })
-                    .reverse()}
-                  <hr />
-                </form>
-              </>
-            ))}
-            <br />
-            </div>
+                        {commments
+                          ?.filter((i) => i.onservicepost == post._id)
+                          .map((comment, index) => {
+                            return (
+                              <div className="realComment" key={index}>
+                                <div className="realcommentData">
+                                  <h5 className="commentauthr">
+                                    {comment.createby.username}
+                                  </h5>
+                                  <p>{comment.text}</p>
+                                  <p className="dateP">
+                                    {comment.createdAt.slice(0, 10)}
+                                  </p>
+
+                                  {/*}   <button className="posttop"
+                          onClick={() => {
+                            deletecomment;
+                          }}
+                          className="deletebtn1"
+                        >
+                        
+                          <BsFillTrashFill />
+                        </button> */}
+                                </div>
+                               
+                                {state.signIn.userId === comment.createby._id ||
+                                state.signIn.role === "admin" ? (
+                                  <button
+                                    className="posttop"
+                                    onClick={() => {
+                                      deletecomment(comment._id);
+                                    }}
+                                    className="deletecomment"
+                                  >
+                                    <AiFillDelete />
+                                  </button>
+                                ) : (
+                                  <></>
+                                )}
+                              </div>
+                            );
+                          })
+                          .reverse()}
+                      </form>
+                    </div>
+                  </>
+                ))}
+                <br />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+        {/* <button className="seemore">show more</button> */}
       </div>
     </div>
   );

@@ -46,17 +46,14 @@ const Login = () => {
   };
 
 
-  const reg = () => {
-
-    navigate("/Registration");
-  };
   return (
     <div className="loginmain">
     <div className="loginform">
       <Container>
-        <h1 className="p-3 mb-2 bg-gradient-light text-dark">Login</h1>
+     
         <form action="/login" method="POST">
           <Form.Group className="m-5" controlId="formBasicEmail">
+               <h1 className="p-3 mb-2 bg-gradient-light text-dark">Login</h1>
             <Form.Label>Email address</Form.Label>
             <br />
             <Form.Control
@@ -88,17 +85,9 @@ const Login = () => {
             <Button className="button" onClick={signin}>
               Login
             </Button>
-            <p>Need an Account ?</p>
-            <Button
-              type="button"
-              className="button"
-              variant="outline-dark"
-              onClick={reg}
-            >
-              Register
-            </Button>
-      
-         
+            <p>Need an Account ?  <Link to="/Registration">Register</Link>    </p>
+        
+     
 
           </Form.Group>
         </form>

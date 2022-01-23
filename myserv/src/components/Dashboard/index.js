@@ -3,13 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+
 import "./style.css";
-import Nav from "./../../components/Nav"
-import {BsFillTrashFill} from "react-icons/bs";
-
-const MySwal = withReactContent(Swal);
-
+import { BsFillTrashFill } from "react-icons/bs";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,7 +14,6 @@ const Dashboard = () => {
 
   const state = useSelector((state) => {
     return {
-
       token: state.signIn.token,
     };
   });
@@ -38,55 +33,59 @@ const Dashboard = () => {
     setPageLoader(false);
   };
 
-
-
-
-
-
-  
+  console.log(state.token);
   const deleteUser = async (id) => {
-    await axios.delete(
-      `http://localhost:5000/delusers/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${state.signIn.token}`,
-        },
-      }
-    );
-  
-    navigate('/userprofile');
+    await axios.delete(`http://localhost:5000/delaccount/${id}`, {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+      },
+    });
+
+    navigate("/Admindashboard");
   };
 
   return (
-    <>
+
+    
+    <div className="dashs">
+
+    <div className="title1">
+            <h2>Users Managment</h2>
+</div>
+
+
+ 
+  
       {state.token ? (
+
+        
         <>
-         
+        
+
           {pageLoader ? (
-            <div className="loaderWrapper">
-             
-            </div>
+            <div className="dash"></div>
           ) : (
             <div className="dashboardWrapper">
               <div className="ItemsCon">
-                 
                 {users ? (
-                    
-                  <ul className="list"> 
-                    {users.map((user,i) => (
+                  <ul className="list">
+                    {users.map((user, i) => (
                       <div key={user._id} className="listItem">
-
-                          <li>{i + 1}  </li>
-                          <li> {user.username}  <hr /></li> 
-                        <li>{user.email}  <hr /></li>
+                        <li>{i + 1} </li>
+                        <li>
+                          {" "}
+                          {user.username} <hr />
+                        </li>
+                        <li>
+                          {user.email} <hr />
+                        </li>
                       
                         <div>
-                        
                           <button
                             onClick={() => deleteUser(user._id)}
                             className="delete"
                           >
-                            <BsFillTrashFill/>
+                            <BsFillTrashFill />
                           </button>
                           <hr />
                         </div>
@@ -101,17 +100,16 @@ const Dashboard = () => {
           )}
         </>
       ) : (
-        <div className="centerWrapper">
-          <div className="signupLoginTitle">
+        <div className="Wrapper">
+          <div className="signup">
             <h1>please sign up </h1>
           </div>
-          <div className="signupLoginButtons">
+         
             <button onClick={() => navigate("/login")}>Login</button>
-       
           </div>
-        </div>
+       
       )}
-    </>
+    </div>
   );
 };
 

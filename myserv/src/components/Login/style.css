@@ -1,86 +1,74 @@
-
-
 .loginmain {
-    background-image: linear-gradient(
+  background-image: linear-gradient(
       360deg,
-        rgba(245, 237, 237, 0.25),
-        rgba(245, 240, 240, 0.25)
-      ),
-      url("https://d1ryy4xg0hd8g7.cloudfront.net/assets/dc/pages/shared/keyboard-a58780fac31f3ba1ff6037b86d45a2d5d980b4606ada3cb5f905163304f7cb3a.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 700px;
-    margin: 0;
-    padding: 0;
-  
-  }
+      rgba(245, 237, 237, 0.25),
+      rgba(245, 240, 240, 0.25)
+    ),
+    url("https://th.bing.com/th/id/R.22164f8f778c68af8eb0261c6fc5134a?rik=VRxzPyKhr%2bO0%2bA&riu=http%3a%2f%2fwww.omahainvestmentadvisors.com%2ffiles%2f80244%2fclient+login.png&ehk=i2LoKkygJjwdW54%2fFxAr6PPLMgDd0fv0WSVzq638gug%3d&risl=&pid=ImgRaw&r=0");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 480px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
 
-  .loginform {
- 
-        display: flex;
-        margin-left: 30%;
-        justify-content: center;
-        height: 60%;
-        width: 40%;
-        margin-bottom: 100px;
-       letter-spacing: 2.5px;
-     font-weight: 200px;
-      color: rgb(52, 84, 102);
-    border: none;
-    border-radius: 10px;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    }
-    
-    .loginform:active {
-    transform: translateY(-1px);
-    }
+.loginform {
+  border: 0.5px solid black;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  width: 40%;
+  height: 350px;
+  margin-top: 40px;
+  letter-spacing: 2.5px;
+  font-weight: 200px;
+  color: rgb(18, 18, 19);
+
+  outline: none;
+}
 
 
 
-    .button {
-        justify-content: center;
-         font-size: 20px;
-         margin-left: 15px;
-         letter-spacing: 2.5px;
-         color: rgb(52, 84, 102);
-         background-color: rgb(114, 132, 143);
-         border: none;
-         border-radius: 80px;
-         box-shadow: 0px 8px 15px rgba(185, 112, 15, 0.1);
-         transition: all 0.3s ease 0s;
-         cursor: pointer;
-         outline: none;
-        }
-        
-        .button:hover {
-         background-color: rgb(23, 40, 49);
-         box-shadow: 0px 15px 20px rgba(233, 59, 68, 0.4);
-         color: #fff;
-         transform: translateY(-7px);
-        }
-        
-        .button:active {
-         transform: translateY(-1px);
-        }
-        .textarea1{
+.button {
+  justify-content: center;
+  font-size: 20px;
+  margin-left: 15px;
+  letter-spacing: 2.5px;
+  color: white;
+  background-color: rgb(114, 132, 143);
+  border: none;
+  border-radius: 80px;
+  box-shadow: 0px 8px 15px rgba(185, 112, 15, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
 
-            width: 400px;
-            height: 25px;
-            margin-bottom: 30px;
-            border: 3px solid rgb(104, 119, 128);
-           background-color: rgb(161, 168, 172);
-            font-family: Tahoma, sans-serif;    
-            }
+.button:hover {
+  background-color: rgb(23, 40, 49);
+  box-shadow: 0px 15px 20px rgba(233, 59, 68, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
 
+.button:active {
+  transform: translateY(-1px);
+}
+.textarea1 {
+  width: 400px;
+  height: 25px;
+  color: darkgrey;
+  margin: 10px 0;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid darkgrey;
+  font-family: Tahoma, sans-serif;
+}
 
-            .imggoogle {
-
-         width: 100px;
-         height: 40px;
-
-
-            }
+.imggoogle {
+  width: 100px;
+  height: 40px;
+}

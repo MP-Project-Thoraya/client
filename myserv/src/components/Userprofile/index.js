@@ -9,7 +9,7 @@ import { FaComment } from "react-icons/fa";
 import { AiOutlineSend,
 } from "react-icons/ai";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
 const Userprofile = () => {
@@ -30,8 +30,7 @@ const Userprofile = () => {
     e.preventDefault();
     console.log();
 
-    const result = await axios.put(
-      `http://localhost:5000/updateuser/${state.signIn.userId}`,
+    const result = await axios.put(`${BASE_URL}/updateuser/${state.signIn.userId}`,
       {
         email: e.target.email.value,
 
@@ -50,15 +49,13 @@ const Userprofile = () => {
 
   const getUsers = async () => {
     console.log(state.signIn.userId);
-    const res = await axios.get(
-      `http://localhost:5000/one_user/${state.signIn.userId}`
+    const res = await axios.get(`${BASE_URL}/one_user/${state.signIn.userId}`
     );
     setUsers(res.data);
   };
 
   const deleteuser = async () => {
-    const result = await axios.delete(
-      `http://localhost:5000/delaccount/${state.signIn.userId}`,
+    const result = await axios.delete(`${BASE_URL}/delaccount/${state.signIn.userId}`,
       {
         headers: {
           Authorization: `Bearer ${state.signIn.token}`,
@@ -94,7 +91,7 @@ const Userprofile = () => {
 
   const getComments = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/getallcomment`);
+      const resp = await axios.get(`${BASE_URL}/getallcomment`);
       console.log(resp.data);
       setcommments(resp.data.result);
     } catch (err) {
@@ -107,8 +104,7 @@ const Userprofile = () => {
     try {
       if (state.signIn.userId) {
         console.log("ff");
-        const resp = await axios.post(
-          `http://localhost:5000/createcomment`,
+        const resp = await axios.post(`${BASE_URL}/createcomment`,
           {
             text: e.target.comment.value,
             createby: state.signIn.userId,
@@ -128,15 +124,14 @@ const Userprofile = () => {
 
   const getUserpost = async () => {
     console.log(state.signIn.userId, "<<<<<<<<<state");
-    const res = await axios.get(
-      `http://localhost:5000/getone/${state.signIn.userId}`
+    const res = await axios.get(`${BASE_URL}/getone/${state.signIn.userId}`
     );
     console.log(res.data.result, "ress <<<<<<<<<<<<<<<<<s");
     setPost(res.data.result);
   };
 
   const deletePost = async (id) => {
-    await axios.delete(`http://localhost:5000/deleteposts/${id}`, {
+    await axios.delete(`${BASE_URL}/deleteposts/${id}`, {
       headers: {
         Authorization: `Bearer ${state.signIn.token}`,
       },

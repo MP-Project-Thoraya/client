@@ -17,18 +17,20 @@ import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 import { IoMdImage } from "react-icons/io";
 
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Services = () => {
   let navigate = useNavigate();
 
   const [addService, setaddService] = useState(false);
+  const [showComment, setshowComment] = useState("show comments");
   const [progress, setProgress] = useState(0);
   const [images, setImages] = useState([]);
   const [post, setPost] = useState([]);
   const [commments, setcommments] = useState([]);
   const newPost = async (e) => {
     e.preventDefault();
-    const result = await axios.post(
-      `http://localhost:5000/create_post`,
+    const result = await axios.post(`${BASE_URL}/create_post`,
       {
         //userId: user._id,
         description: e.target.description.value,
@@ -76,7 +78,7 @@ const Services = () => {
 
   const getPosts = () => {
     try {
-      axios.get(`http://localhost:5000/getall`).then((result) => {
+      axios.get(`${BASE_URL}/getall`).then((result) => {
         console.log(result.data);
         setPost(result.data.result);
       });
@@ -88,8 +90,7 @@ const Services = () => {
   const updatpost = async (e) => {
     e.preventDefault();
 
-    const result = await axios.put(
-      `http://localhost:5000/update/${state.signIn.userId}`,
+    const result = await axios.put(`${BASE_URL}/update/${state.signIn.userId}`,
       {
         description: e.target.description.value,
         image: e.target.image.value,
@@ -108,7 +109,7 @@ const Services = () => {
 
   const getComments = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/getallcomment`);
+      const resp = await axios.get(`${BASE_URL}/getallcomment`);
       console.log(resp.data);
       setcommments(resp.data.result);
     } catch (err) {
@@ -121,8 +122,7 @@ const Services = () => {
     try {
       if (state.signIn.userId) {
         console.log("ff");
-        const resp = await axios.post(
-          `http://localhost:5000/createcomment`,
+        const resp = await axios.post(`${BASE_URL}/createcomment`,
           {
             text: e.target.comment.value,
             createby: state.signIn.userId,
@@ -143,8 +143,7 @@ const Services = () => {
 
   const deletecomment = async (id) => {
     try {
-      const resp = await axios.delete(
-        `http://localhost:5000/deletecomment/${id}`,
+      const resp = await axios.delete(`${BASE_URL}/deletecomment/${id}`,
         {
           headers: { Authorization: `Bearer ${state.signIn.token}` },
         }
@@ -156,7 +155,7 @@ const Services = () => {
   };
 
   const deletePost = async (id) => {
-    await axios.delete(`http://localhost:5000/deleteposts/${id}`, {
+    await axios.delete(`${BASE_URL}/deleteposts/${id}`, {
       headers: {
         Authorization: `Bearer ${state.signIn.token}`,
       },
@@ -310,48 +309,73 @@ const Services = () => {
                         />
                       ))}
 
-                      <form
-                        className="comments_form"
-                        onSubmit={(e) => sendComment(e, post._id)}
-                      >
-                        <div className="commentTail">
-                          <div className="numComment">
-                            <h3 className="length">
-                              {
-                                commments?.filter(
-                                  (i) => i.onservicepost == post._id
-                                ).length
-                              }
-                              <FaComment />
-                            </h3>
+                      <input
+                      type="button"
+
+                        onClick={(e) => {
+                          console.log(showComment)
+                          if (showComment  === "hide comments"){
+                            setshowComment("show comments");
+                            //e.target.value="show comments"
+
+
+                          }
+                          else
+                          {
+                            //e.target.value="hide comments"
+                            setshowComment( "hide comments");
+                          } 
+                        }}
+                      value={showComment}
+                      />
+           
+
+                      {showComment === "show comments" ? (
+                        <></>
+                      ) : (
+                        <form
+                          className="comments_form"
+                          onSubmit={(e) => sendComment(e, post._id)}
+                        >
+                          <div className="commentTail">
+                            <div className="numComment">
+                              <h3 className="length">
+                                {
+                                  commments?.filter(
+                                    (i) => i.onservicepost == post._id
+                                  ).length
+                                }
+                                <FaComment />
+                              </h3>
+                            </div>
+
+                            <textarea
+                              className="commenttext "
+                              name="comment"
+                              placeholder="write here comments"
+                              required
+                              cols="50"
+                            ></textarea>
+                            <button className="commentsend" type="submit">
+                              <AiOutlineSend />
+                            </button>
                           </div>
+                          {}
+                          {commments
+                            ?.filter((i) => i.onservicepost == post._id)
+                            .map((comment, index) => {
+                              return (
+                                <div className="realComment" key={index}>
+                                  <div className="realcommentData">
+                                    <h5 className="commentauthr">
+                                      {comment.createby.username}
+                                    </h5>
+                                    <p>{comment.text}</p>
+                                    <p className="dateP">
+                                      {comment.createdAt.slice(0, 10)}
+                                    </p>
 
-                          <textarea
-                            className="commenttext "
-                            name="comment"
-                            placeholder="write here comments"
-                            required
-                            cols="50"
-                          ></textarea>
-                          <button className="commentsend" type="submit">
-                            <AiOutlineSend />
-                          </button>
-                        </div>
-                        {commments
-                          ?.filter((i) => i.onservicepost == post._id)
-                          .map((comment, index) => {
-                            return (
-                              <div className="realComment" key={index}>
-                                <div className="realcommentData">
-                                  <h5 className="commentauthr">
-                                    {comment.createby.username}
-                                  </h5>
-                                  <p>{comment.text}</p>
-                                  <p className="dateP">
-                                    {comment.createdAt.slice(0, 10)}
-                                  </p>
-
-                                  {/*}   <button className="posttop"
+                                    {/*}   <button className="posttop"
                           onClick={() => {
                             deletecomment;
                           }}
@@ -360,27 +384,29 @@ const Services = () => {
                         
                           <BsFillTrashFill />
                         </button> */}
+                                  </div>
+
+                                  {state.signIn.userId ===
+                                    comment.createby._id ||
+                                  state.signIn.role === "admin" ? (
+                                    <button
+                                      className="posttop"
+                                      onClick={() => {
+                                        deletecomment(comment._id);
+                                      }}
+                                      className="deletecomment"
+                                    >
+                                      <AiFillDelete />
+                                    </button>
+                                  ) : (
+                                    <></>
+                                  )}
                                 </div>
-                               
-                                {state.signIn.userId === comment.createby._id ||
-                                state.signIn.role === "admin" ? (
-                                  <button
-                                    className="posttop"
-                                    onClick={() => {
-                                      deletecomment(comment._id);
-                                    }}
-                                    className="deletecomment"
-                                  >
-                                    <AiFillDelete />
-                                  </button>
-                                ) : (
-                                  <></>
-                                )}
-                              </div>
-                            );
-                          })
-                          .reverse()}
-                      </form>
+                              );
+                            })
+                            .reverse()}
+                        </form>
+                      )}
                     </div>
                   </>
                 ))}

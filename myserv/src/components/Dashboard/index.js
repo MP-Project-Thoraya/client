@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import "./style.css";
 import { BsFillTrashFill } from "react-icons/bs";
 
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Dashboard = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -24,7 +26,7 @@ const Dashboard = () => {
   }, []);
 
   const getUsers = async () => {
-    const res = await axios.get(`http://localhost:5000/allusers`, {
+    const res = await axios.get(`${BASE_URL}/allusers`, {
       headers: {
         Authorization: `Bearer ${state.token}`,
       },
@@ -35,7 +37,7 @@ const Dashboard = () => {
 
   console.log(state.token);
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:5000/delaccount/${id}`, {
+    await axios.delete(`${BASE_URL}/delaccount/${id}`, {
       headers: {
         Authorization: `Bearer ${state.token}`,
       },

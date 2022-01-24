@@ -3,7 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Registration = () => {
   const [usernameReg, setusernameReg] = useState("");
@@ -16,7 +16,7 @@ const Registration = () => {
   const reg = (e) => {
     e.preventDefault();
     console.log(usernameReg);
-    axios.post("http://localhost:5000/signup", {
+    axios.post(`${BASE_URL}/signup`, {
         username: usernameReg,
         email: emailReg,
         password: passwordReg,

@@ -2,6 +2,7 @@ import './style.css'
 import { Form, Button, Container } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import PasswordChecklist from "react-password-checklist"
 import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -90,20 +91,38 @@ const Registration = () => {
 
         <p className="mx-5 mt-4 text-danger ">{regResponse}</p>
         <Button
-          className="button"
+          className="buttonr"
           type="submit"
           onClick={reg}
         >
           Register
         </Button>
-        <Button
+        <Button className="buttonr"
           type="button"
-          className="button"
+         
           variant="outline-dark"
           onClick={goLogin}
         >
           Login
         </Button>
+
+<br/>
+<br/>
+        <PasswordChecklist
+				rules={["minLength","specialChar","number","capital",]}
+				minLength={7}
+				value={passwordReg}
+			
+				messages={{
+					minLength: "Password has more than 7 characters.",
+					specialChar: "Password has special characters.",
+					number: "Password has a number.",
+					capital: "Password has a capital letter.",
+				
+				}}
+			/>
+
+
       </form>
     </Container>
     </div>

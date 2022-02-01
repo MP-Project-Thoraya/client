@@ -82,7 +82,7 @@ cursor: pointer ;
 .post {
 
     width: 53%;
-    border-radius: 40px;
+    
  display: flex;
  justify-content: center;
 
@@ -97,8 +97,7 @@ margin-top: 30px;
         justify-content: center;
         align-items: center;
       font-family: Arial, Helvetica, sans-serif;
-     
-
+    
 
 }
 
@@ -111,18 +110,6 @@ margin-left: 30rem;
 
 
 
-.seemore{
-width: 200px;
-border: none;
-padding: 15px;
-border-radius: 30px;
-font-weight: bold;
-display: flex;
-justify-content: center;
-justify-items: center;
-
-
-}
 
 .deletebtn1 {
     color: rgb(206, 7, 7);
@@ -132,7 +119,7 @@ justify-items: center;
     margin-top: 5px;
 background-color:  rgb(238, 236, 236);
   font-size: 18px;
-  padding-left: 21rem;
+  padding-left: 28rem;
   border: none;
   }
   
@@ -258,8 +245,8 @@ margin-left: 7px;
 
   .spost{
 background-color: rgb(238, 236, 236);
-border-radius: 30px;
-border: 2px solid black;
+
+border: 1px solid black;
 margin-bottom: 30px;
 
   }
@@ -270,4 +257,18 @@ color:rgb(139, 115, 115) ;
 
   }
 
- 
+
+
+  .showc{
+
+    background-color: rgb(153, 139, 139) ;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 7px;
+    border-radius: 20px;
+    margin-right: 250px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+
+  }

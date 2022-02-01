@@ -9,21 +9,21 @@ import './style.css'
 const slideImages = [
   {
     url: 'https://www.thekikoowebradio.com/wp-content/uploads/2019/07/images3601-5d374557a57df.jpg',
-    caption: 'Home Design Services'
+    caption: ''
   },
   {
     url: 'https://www.mollymaid.com/assets/content/content-b-img.2008121658469.jpg',
-    caption: ' House Cleaning Services'
+    caption: ''
    
   },
   {
     url: 'https://restobod.com/wp-content/uploads/2019/07/shutterstock_615581297-1024x683.jpg',
-    caption: 'Beauty Services'
+    caption: ''
   },
 
   {
     url: 'https://cdn.aarp.net/content/dam/aarp/auto/2020/01/1140-young-male-driver.jpg',
-    caption: 'Transportation Services'
+    caption: ''
   },
 ];
 

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import { logout } from "./../../reducers/login";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineUser } from "react-icons/ai";
 import { IoExit } from "react-icons/io5";
 import {FaUsersCog,FaUserEdit} from "react-icons/fa";
 
@@ -41,7 +40,7 @@ const NavBar = () => {
 
           {state.signIn.token && (
           <Link to="/category"> 
-            <li className="toplistitem">services</li>
+            <li className="toplistitem">Services</li>
           </Link> )}
 
  
@@ -57,16 +56,12 @@ const NavBar = () => {
           </Link> 
           </>
            )}
-      <div className="right">
+
       
-          {state.signIn.role === "admin" && (
-          <Link to="/Admindashboard"><FaUsersCog/>
-            <li className="toplistitem"></li>
-          </Link>
-          )}
+         
 
           {state.signIn.token && (
-            <Link to="/userprofile">
+            <Link className="listuser"  to="/userprofile">
               <FaUserEdit />{" "}
             </Link> )}
 
@@ -75,7 +70,13 @@ const NavBar = () => {
               {" "}
               <IoExit />
             </button>  )}
-            </div>
+
+            {state.signIn.role === "admin" && (
+          <Link to="/Admindashboard"><FaUsersCog/>
+            <li className="toplistitem"></li>
+          </Link>
+          )}
+            
           
         </ul>
         

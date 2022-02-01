@@ -12,7 +12,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [logResponse, setLogResponse] = useState("");
   const navigate = useNavigate();
 
   const signin = async (e) => {
@@ -77,7 +76,7 @@ const Login = () => {
               />
 
               <Form.Check type="checkbox" label="Remeber me" />
-              <p>{logResponse}</p>
+            
 
               <Button className="button" onClick={signin}>
                 Login

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { IoIosAddCircle } from "react-icons/io";
+import ShowMore from 'react-show-more-button';
+
 import {
   AiTwotoneEdit,
   AiOutlineClose,
@@ -180,7 +182,9 @@ const Services = () => {
   ////////////////////////
 
   return (
+   
     <div className="con">
+       
       <div className="sharewapper">
         <div className="descr">
           <h3>
@@ -274,11 +278,9 @@ const Services = () => {
                         </button> */}
                       </div>
                     </div>
+                  
                     <div className="spost">
-                      <span className="dateP">
-                        {" "}
-                        {post.createdAt.slice(0, 10)}
-                      </span>
+                    
 
                       {state.signIn.userId === post.createby._id ||
                       state.signIn.role === "admin" ? (
@@ -295,11 +297,7 @@ const Services = () => {
                         <></>
                       )}
 
-                      <h4>by: {post?.createby?.username}</h4>
-                      <h3>{post?.title}</h3>
-                      <p>{post?.description}</p>
-
-                      {post?.image?.map((i) => (
+   {post?.image?.map((i) => (
                         <img
                           className="postimg"
                           src={i}
@@ -309,9 +307,17 @@ const Services = () => {
                         />
                       ))}
 
+
+
+
+                      <h4>by: {post?.createby?.username}</h4>
+                      <h3>{post?.title}</h3>
+                      <p>{post?.description}</p>
+
+                   
                       <input
                       type="button"
-
+                      className="showc"
                         onClick={(e) => {
                           console.log(showComment)
                           if (showComment  === "hide comments"){
@@ -329,7 +335,10 @@ const Services = () => {
                       value={showComment}
                       />
            
-
+           <span className="dateP">
+                        {" "}
+                        {post.createdAt.slice(0, 10)}
+                      </span>
                       {showComment === "show comments" ? (
                         <></>
                       ) : (
@@ -408,6 +417,7 @@ const Services = () => {
                         </form>
                       )}
                     </div>
+                   
                   </>
                 ))}
                 <br />
@@ -416,7 +426,9 @@ const Services = () => {
           </div>
         )}
         {/* <button className="seemore">show more</button> */}
+       
       </div>
+     
     </div>
   );
 };

@@ -13,8 +13,10 @@ const Home =()=> {
     <>
 
 <Header />
+
 <Content/>
-{ <Sidebar/> }
+
+
 
 
     <div className="home"> 
